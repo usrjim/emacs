@@ -17,6 +17,7 @@
   (setq ecb-tip-of-the-day nil)
   (setq ecb-primary-secondary-mouse-buttons 'mouse-1--C-mouse-1)
   (slime-setup '(slime-fancy))
+  (setq inferior-lisp-program "/usr/bin/sbcl")
   (delete-selection-mode 1)
   (setq make-backup-files nil)
   (setq auto-save-default nil)
@@ -62,7 +63,6 @@
   (define-key f12-map (kbd "f") 'ido-find-file)
   (define-key f12-map (kbd "e") 'eval-last-sexp)
   (define-key f12-map (kbd "1") 'delete-other-windows)
-  (define-key f12-map (kbd "1") 'delete-other-windows)
   (define-key f12-map (kbd "2") 'split-window-below)
   (define-key f12-map (kbd "3") 'split-window-right)
   (define-key f12-map (kbd "q") 'top-level)
@@ -92,11 +92,22 @@
   (define-key-after global-map [menu-bar usrj]
     (cons "usrj" (make-sparse-keymap "usrj")))
 
-  (define-key global-map [menu-bar usrj usrj-nl]
-    '("Next Line" . next-line))
+  (define-key global-map [menu-bar usrj usrj-slime]
+    '("SLIME" . slime))
+  (define-key global-map [menu-bar usrj usrj-erc]
+    '("ERC" . erc))
+  (define-key global-map [menu-bar usrj usrj-ecb]
+    '("ECB" . ecb-activate))
+  (define-key global-map [menu-bar usrj usrj-magit]
+    '("Magit" . magit-status))
 
-  (define-key global-map [menu-bar usrj usrj-sp1]
-    '("--")))
+  (define-key global-map [menu-bar usrj usrj-sp1] '("--"))
+
+  (define-key global-map [menu-bar usrj usrj-del-win]
+    '("Delete window" . delete-window))
+  (define-key global-map [menu-bar usrj usrj-one-win]
+    '("One window" . delete-other-windows))
+)
 
 (defun php-setup ()
   (add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))
