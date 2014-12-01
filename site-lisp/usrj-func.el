@@ -17,7 +17,7 @@
   (setq ecb-tip-of-the-day nil)
   (setq ecb-primary-secondary-mouse-buttons 'mouse-1--C-mouse-1)
   (slime-setup '(slime-fancy))
-  (setq inferior-lisp-program "/usr/bin/sbcl")
+  ;(setq inferior-lisp-program "/usr/bin/sbcl")
   (delete-selection-mode 1)
   (setq make-backup-files nil)
   (setq auto-save-default nil)
@@ -55,6 +55,10 @@
   (my-keys))
 
 (defun my-keys ()
+  ;;; c-c <-> c-i
+  (keyboard-translate ?\C-i ?\C-c)
+  (keyboard-translate ?\C-c ?\C-i)
+
   ;;; f12 group, keys are on left hand side
   (define-prefix-command 'f12-map)
   (global-set-key (kbd "<f12>") 'f12-map)
