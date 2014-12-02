@@ -50,15 +50,18 @@
   ;(electric-indent-mode 1)
   (when (window-system)
     ;(nyan-mode 1)
-    (set-frame-parameter (selected-frame) 'alpha '(95 65))
+    ;(set-frame-parameter (selected-frame) 'alpha '(95 65))
     (tool-bar-mode t)
     (scroll-bar-mode -1))
   (my-keys))
 
 (defun my-keys ()
   ;;; c-c <-> c-i
+  ;;; c-x <-> c-m
   (keyboard-translate ?\C-i ?\C-c)
   (keyboard-translate ?\C-c ?\C-i)
+  (keyboard-translate ?\C-m ?\C-x)
+  (keyboard-translate ?\C-x ?\C-m)
 
   ;;; f12 group, keys are on left hand side
   (define-prefix-command 'f12-map)
