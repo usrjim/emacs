@@ -50,14 +50,13 @@
   ;(electric-indent-mode 1)
   (when (window-system)
     ;(nyan-mode 1)
-    ;(set-frame-parameter (selected-frame) 'alpha '(95 65))
+    (set-frame-parameter (selected-frame) 'alpha '(95 65))
     (tool-bar-mode t)
     (scroll-bar-mode -1))
   (my-keys))
 
 (defun my-keys ()
   ;;; c-c <-> c-i
-  ;;; c-x <-> c-m
   (keyboard-translate ?\C-i ?\C-c)
   (keyboard-translate ?\C-c ?\C-i)
   (keyboard-translate ?\C-m ?\C-x)
@@ -74,6 +73,7 @@
   (define-key f12-map (kbd "2") 'split-window-below)
   (define-key f12-map (kbd "3") 'split-window-right)
   (define-key f12-map (kbd "q") 'top-level)
+  (define-key f12-map (kbd "b") 'ido-switch-buffer)
 
   ;;; f2 group, keys are on right hand side
   (define-prefix-command 'f2-map)
@@ -110,6 +110,10 @@
     '("Magit" . magit-status))
 
   (define-key global-map [menu-bar usrj usrj-sp1] '("--"))
+  (define-key global-map [menu-bar usrj usrj-org-export-html-open]
+    '("Org Export as HTML and Open" . org-export-as-html-and-open))
+
+  (define-key global-map [menu-bar usrj usrj-sp2] '("--"))
 
   (define-key global-map [menu-bar usrj usrj-del-win]
     '("Delete window" . delete-window))
