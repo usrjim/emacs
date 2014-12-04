@@ -43,7 +43,7 @@
   (setq recentf-max-saved-items 50)
   (global-visual-line-mode t)
   (show-paren-mode 1)
-  (global-linum-mode t)
+  ;(global-linum-mode t)
   (line-number-mode "on")
   (column-number-mode "on")
   (electric-pair-mode 1)
