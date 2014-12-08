@@ -62,6 +62,11 @@
   (keyboard-translate ?\C-m ?\C-x)
   (keyboard-translate ?\C-x ?\C-m)
 
+  ;;; multiple cursors
+  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+
   ;;; f12 group, keys are on left hand side
   (define-prefix-command 'f12-map)
   (global-set-key (kbd "<f12>") 'f12-map)
