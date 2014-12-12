@@ -12,6 +12,7 @@
   (setq erc-hide-list '("JOIN" "PART" "QUIT"))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (setq buffer-file-coding-system 'utf-8-unix)
   (setq slime-net-coding-system 'utf-8-unix)
   (add-hook 'web-mode-hook  'emmet-mode)
   (setq ecb-tip-of-the-day nil)
