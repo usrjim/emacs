@@ -8,12 +8,13 @@
   (autoload 'ecb-autoloads "ecb-autoloads"))
 
 (defun my-env ()
+  (blink-cursor-mode nil)
   (set-language-environment "utf-8")
   (setq erc-hide-list '("JOIN" "PART" "QUIT"))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (setq buffer-file-coding-system 'utf-8-unix)
   (setq slime-net-coding-system 'utf-8-unix)
+  (setq buffer-file-coding-system 'utf-8-unix)
   (add-hook 'web-mode-hook  'emmet-mode)
   (setq ecb-tip-of-the-day nil)
   (setq ecb-primary-secondary-mouse-buttons 'mouse-1--C-mouse-1)
@@ -98,6 +99,8 @@
   (define-key f2-map (kbd "i") 'end-of-visual-line)
   
   ;;; misc
+  (global-set-key (kbd "M-<up>") 'move-line-up)
+  (global-set-key (kbd "M-<down>") 'move-line-down)
   (global-set-key (kbd "<f7>") 'list-func)
   (global-set-key (kbd "C-<f11>") 'magit-status)
   (global-set-key (kbd "C-<f7>") 'ecb-activate))
@@ -186,3 +189,26 @@
   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
       (message "Opening file...")
     (message "Aborting")))
+
+(defun move-line (n)
+  "Move the current line up or down by N lines."
+  (interactive "p")
+  (setq col (current-column))
+  (beginning-of-line) (setq start (point))
+  (end-of-line) (forward-char) (setq end (point))
+  (let ((line-text (delete-and-extract-region start end)))
+    (forward-line n)
+    (insert line-text)
+    ;; restore point to original column in moved line
+    (forward-line -1)
+    (forward-char col)))
+
+(defun move-line-up (n)
+  "Move the current line up by N lines."
+  (interactive "p")
+  (move-line (if (null n) -1 (- n))))
+
+(defun move-line-down (n)
+  "Move the current line down by N lines."
+  (interactive "p")
+  (move-line (if (null n) 1 n)))
