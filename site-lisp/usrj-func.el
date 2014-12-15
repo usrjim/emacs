@@ -32,8 +32,6 @@
   (setq ido-use-faces nil)
   (setq indent-line-function 'insert-tab)
   (projectile-global-mode)
-  ;(setq c-basic-offset 4)
-  ;(setq c-basic-indent 4)
   (setq-default indent-tabs-mode nil)
   (setq-default tab-always-indent t)
   (setq-default tab-width 4)
@@ -132,7 +130,10 @@
 
 (defun php-setup ()
   (add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))
-  (add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode)))
+  (add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode))
+  (add-hook 'php-mode-hook '(lambda()
+                              (setq c-basic-offset 2)
+                              (setq tab-width 2))))
 
 (defun php-scratch ()
   (interactive)
