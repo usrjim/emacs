@@ -25,13 +25,12 @@
   (setq auto-save-default nil)
   (setq inhibit-startup-message t)
   (cua-mode t)
-  (projectile-global-mode)
+  ;(projectile-global-mode)
   (ido-mode 1)
   (setq ido-enable-flex-matching t)
   (setq ido-everywhere t)
   (setq ido-use-faces nil)
   (setq indent-line-function 'insert-tab)
-  (projectile-global-mode)
   (setq-default indent-tabs-mode nil)
   (setq-default tab-always-indent t)
   (setq-default tab-width 4)
@@ -125,8 +124,14 @@
   (define-key global-map [menu-bar usrj usrj-del-win]
     '("Delete window" . delete-window))
   (define-key global-map [menu-bar usrj usrj-one-win]
-    '("One window" . delete-other-windows))
-)
+    '("One window" . delete-other-windows)))
+
+(defun my-tool-bar ()
+  (tool-bar-add-item "separator" 'ignore 'ignore :help "" :enable nil)
+  (tool-bar-add-item "ezimage/page" 'delete-other-windows 'usrj-tb-one-win)
+  (tool-bar-add-item "ezimage/page-minus" 'delete-window 'usrj-tb-del-win)
+  (tool-bar-add-item "right-arrow" 'split-window-right 'usrj-tb-win-right)
+  (tool-bar-add-item "up-arrow" 'split-window-below 'usrj-tb-win-below))
 
 (defun php-setup ()
   (add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))

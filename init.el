@@ -7,6 +7,8 @@
 (load "usrj-func")
 (my-depen)
 (my-env)
+(my-menu)
+(my-tool-bar)
 (php-setup)
 (go-setup)
 
