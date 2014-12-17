@@ -128,10 +128,12 @@
 
 (defun my-tool-bar ()
   (tool-bar-add-item "separator" 'ignore 'ignore :help "" :enable nil)
+  (tool-bar-add-item "ezimage/bits" 'shell-command 'usrj-tb-shell)
   (tool-bar-add-item "ezimage/page" 'delete-other-windows 'usrj-tb-one-win)
   (tool-bar-add-item "ezimage/page-minus" 'delete-window 'usrj-tb-del-win)
   (tool-bar-add-item "right-arrow" 'split-window-right 'usrj-tb-win-right)
-  (tool-bar-add-item "up-arrow" 'split-window-below 'usrj-tb-win-below))
+  (tool-bar-add-item "up-arrow" 'split-window-below 'usrj-tb-win-below)
+  (tool-bar-add-item "newsticker/narrow" 'list-buffers 'usrj-tb-list-bfs))
 
 (defun php-setup ()
   (add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))
