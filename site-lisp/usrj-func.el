@@ -2,6 +2,7 @@
   (require 'go-mode-load)
   (require 'ace-jump-mode)
   (require 'php-mode)
+  (require 'expand-region)
   (autoload 'emmet-mode "emmet-mode")
   (autoload 'markdown-mode "markdown-mode")
   (autoload 'web-mode "web-mode")
@@ -60,6 +61,8 @@
   (keyboard-translate ?\C-c ?\C-i)
   (keyboard-translate ?\C-m ?\C-x)
   (keyboard-translate ?\C-x ?\C-m)
+
+  (global-set-key (kbd "C-=") 'er/expand-region)
 
   ;;; multiple cursors
   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
