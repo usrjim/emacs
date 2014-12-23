@@ -131,6 +131,7 @@
 
 (defun my-tool-bar ()
   (tool-bar-add-item "separator" 'ignore 'ignore :help "" :enable nil)
+  (tool-bar-add-item "connect" 'eshell 'usrj-tb-esh)
   (tool-bar-add-item "ezimage/box-minus" 'sos 'usrj-tb-sos)
   (tool-bar-add-item "ezimage/bits" 'shell-command 'usrj-tb-shell)
   (tool-bar-add-item "ezimage/page" 'delete-other-windows 'usrj-tb-one-win)

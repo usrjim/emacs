@@ -13,6 +13,7 @@
 (go-setup)
 
 (setq default-directory "/opt")
+(setq frame-title-format "ed")
 
 (load "sos")
 
