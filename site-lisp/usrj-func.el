@@ -1,7 +1,5 @@
 (defun my-depen ()
-  (require 'go-mode-load)
   (require 'ace-jump-mode)
-  (require 'php-mode)
   (require 'expand-region)
   (autoload 'emmet-mode "emmet-mode")
   (autoload 'markdown-mode "markdown-mode")
@@ -21,13 +19,13 @@
   (setq ecb-tip-of-the-day nil)
   (setq ecb-primary-secondary-mouse-buttons 'mouse-1--C-mouse-1)
   (slime-setup '(slime-fancy))
-  ;(setq inferior-lisp-program "/usr/bin/sbcl")
+  ;; (setq inferior-lisp-program "/usr/bin/sbcl")
   (delete-selection-mode 1)
   (setq make-backup-files nil)
   (setq auto-save-default nil)
   (setq inhibit-startup-message t)
   (cua-mode t)
-  ;(projectile-global-mode)
+  ;; (projectile-global-mode)
   (ido-mode 1)
   (setq ido-enable-flex-matching t)
   (setq ido-everywhere t)
@@ -39,18 +37,18 @@
   (add-hook 'after-init-hook 'global-company-mode)
   (setq ace-jump-mode-case-fold nil)
   (setq ace-jump-mode-submode-list
-      '(ace-jump-char-mode ace-jump-word-mode ace-jump-line-mode))
+        '(ace-jump-char-mode ace-jump-word-mode ace-jump-line-mode))
   (recentf-mode 1)
   (setq recentf-max-saved-items 50)
   (global-visual-line-mode t)
   (show-paren-mode 1)
-  ;(global-linum-mode t)
+  ;; (global-linum-mode t)
   (line-number-mode "on")
   (column-number-mode "on")
   (electric-pair-mode 1)
-  ;(electric-indent-mode 1)
+  ;; (electric-indent-mode 1)
   (when (window-system)
-    ;(nyan-mode 1)
+    ;; (nyan-mode 1)
     (set-frame-parameter (selected-frame) 'alpha '(95 65))
     (tool-bar-mode t)
     (scroll-bar-mode -1))
@@ -90,7 +88,7 @@
   (define-key f2-map (kbd "o") 'other-window)
   (define-key f2-map (kbd "/") 'occur)
   (define-key f2-map (kbd "j") 'ace-jump-mode)
-  (define-key f2-map (kbd "\\") 'dabbrev-expand)
+  (define-key f2-map (kbd "\\") 'company-complete)
   (define-key f2-map (kbd "k") 'kill-this-buffer)
   (define-key f2-map (kbd "p") 'projectile-command-map)
   (define-key f2-map (kbd "b") 'ido-switch-buffer)
@@ -142,7 +140,41 @@
   (tool-bar-add-item "up-arrow" 'split-window-below 'usrj-tb-win-below)
   (tool-bar-add-item "newsticker/narrow" 'list-buffers 'usrj-tb-list-bfs))
 
+(defun java-setup()
+  (require 'eclim)
+  (require 'company-emacs-eclim)
+  (global-eclim-mode)
+  (company-emacs-eclim-setup)
+  (setq help-at-pt-display-when-idle t)
+  (setq help-at-pt-timer-delay 0.1)
+  (help-at-pt-set-timer)
+  (add-hook 'eclim-mode-hook '(lambda ()
+                                (local-set-key (kbd "<f6>") 'eclim-run-class)
+                                (define-key-after global-map [menu-bar usrj-eclim]
+                                  (cons "usrj-eclim" (make-sparse-keymap "usrj-eclim")))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-refactor-rename]
+                                  '("Refactor Rename" . eclim-java-refactor-rename-symbol-at-point))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-sp2] '("--"))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-find-declaration]
+                                  '("Find Declaration" . eclim-java-find-declaration))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-find-references]
+                                  '("Find References" . eclim-java-find-references))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-show-documentation]
+                                  '("Show Documentation" . eclim-java-show-documentation-for-current-element))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-hierarchy]
+                                  '("Show Hierarchy" . eclim-java-hierarchy))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-problem-correct]
+                                  '("Problem Correct" . eclim-problems-correct)) 
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-sp1] '("--"))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-import-organize]
+                                  '("Import Organize" . eclim-java-import-organize))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-format]
+                                  '("Format" . eclim-java-format))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-run-class]
+                                  '("Run Class" . eclim-run-class)))))
+
 (defun php-setup ()
+  (require 'php-mode)
   (add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))
   (add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode))
   (add-hook 'php-mode-hook '(lambda()
@@ -175,20 +207,13 @@
         (buffer-list)))
 
 (defun go-setup ()
+  (require 'go-mode-load)
   (add-hook 'before-save-hook 'gofmt-before-save)
   (add-hook 'go-mode-hook '(lambda ()
-                             (local-set-key (kbd "C-c C-i") 'go-import-add)))
-  
-  (add-hook 'go-mode-hook '(lambda ()
-                             (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
-
-  (add-hook 'go-mode-hook '(lambda ()
-                             (local-set-key (kbd "<f7>") 'godoc)))
-
-  (add-hook 'go-mode-hook (lambda ()
-                            (set (make-local-variable 'company-backends) '(company-go))))
-
-  (add-hook 'go-mode-hook '(lambda ()
+                             (local-set-key (kbd "C-c C-i") 'go-import-add)
+                             (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
+                             (local-set-key (kbd "<f7>") 'godoc)
+                             (set (make-local-variable 'company-backends) '(company-go))
                              (local-set-key (kbd "<f6>") 'go-run))))
 
 (defun go-run ()
