@@ -155,6 +155,8 @@
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-refactor-rename]
                                   '("Refactor Rename" . eclim-java-refactor-rename-symbol-at-point))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-sp2] '("--"))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-find-type]
+                                  '("Find Type" . eclim-java-find-type))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-find-declaration]
                                   '("Find Declaration" . eclim-java-find-declaration))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-find-references]
