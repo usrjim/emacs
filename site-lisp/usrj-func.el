@@ -9,7 +9,8 @@
   (autoload 'ecb-autoloads "ecb-autoloads"))
 
 (defun my-env ()
-  (blink-cursor-mode nil)
+  (setq cursor-type 'bar)
+  (setq blink-cursor-interval 0)
   (set-language-environment "utf-8")
   (setq erc-hide-list '("JOIN" "PART" "QUIT"))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
@@ -101,6 +102,7 @@
   ;;; misc
   (global-set-key (kbd "M-<up>") 'move-line-up)
   (global-set-key (kbd "M-<down>") 'move-line-down)
+  (global-set-key (kbd "M-RET") 'my-new-line)
   (global-set-key (kbd "<f7>") 'list-func)
   (global-set-key (kbd "C-<f11>") 'magit-status)
   (global-set-key (kbd "C-<f7>") 'ecb-activate))
@@ -225,6 +227,11 @@
   "Move the current line down by N lines."
   (interactive "p")
   (move-line (if (null n) 1 n)))
+
+(defun my-new-line()
+  (interactive)
+  (end-of-visual-line)
+  (newline-and-indent))
 
 (defun my-blog-date()
   (interactive)
