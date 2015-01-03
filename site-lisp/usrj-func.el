@@ -45,7 +45,7 @@
   ;; (global-linum-mode t)
   (line-number-mode "on")
   (column-number-mode "on")
-  (electric-pair-mode 1)
+  ;; (electric-pair-mode 1)
   ;; (electric-indent-mode 1)
   (when (window-system)
     ;; (nyan-mode 1)
