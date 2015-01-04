@@ -148,6 +148,8 @@
   (setq help-at-pt-display-when-idle t)
   (setq help-at-pt-timer-delay 0.1)
   (help-at-pt-set-timer)
+  (add-hook 'java-mode-hook '(lambda()
+                               (eclim-mode t)))
   (add-hook 'eclim-mode-hook '(lambda ()
                                 (local-set-key (kbd "<f6>") 'eclim-run-class)
                                 (define-key-after global-map [menu-bar usrj-eclim]
