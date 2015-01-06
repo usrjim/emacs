@@ -157,6 +157,14 @@
                                 (local-set-key (kbd "<f6>") 'eclim-run-class)
                                 (define-key-after global-map [menu-bar usrj-eclim]
                                   (cons "usrj-eclim" (make-sparse-keymap "usrj-eclim")))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-project-build]
+                                  '("Project Build" . eclim-project-build)) 
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-project-create]
+                                  '("Project Create" . eclim-project-create))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-problem-correct]
+                                  '("Problem Correct" . eclim-problems-correct)) 
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-hierarchy]
+                                  '("Show Hierarchy" . eclim-java-hierarchy))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-refactor-rename]
                                   '("Refactor Rename" . eclim-java-refactor-rename-symbol-at-point))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-sp2] '("--"))
@@ -168,10 +176,6 @@
                                   '("Find References" . eclim-java-find-references))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-show-documentation]
                                   '("Show Documentation" . eclim-java-show-documentation-for-current-element))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-hierarchy]
-                                  '("Show Hierarchy" . eclim-java-hierarchy))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-problem-correct]
-                                  '("Problem Correct" . eclim-problems-correct)) 
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-sp1] '("--"))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-import-organize]
                                   '("Import Organize" . eclim-java-import-organize))
