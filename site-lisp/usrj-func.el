@@ -177,6 +177,8 @@
                                   '("Find References" . eclim-java-find-references))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-show-documentation]
                                   '("Show Documentation" . eclim-java-show-documentation-for-current-element))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-problems]
+                                  '("Show Problems" . eclim-problems-open))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-sp1] '("--"))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-import-organize]
                                   '("Import Organize" . eclim-java-import-organize))
