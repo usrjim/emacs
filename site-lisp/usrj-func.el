@@ -98,7 +98,8 @@
   (define-key f2-map (kbd "h") 'back-to-indentation)
   (define-key f2-map (kbd "u") 'beginning-of-visual-line)
   (define-key f2-map (kbd "i") 'end-of-visual-line)
-  
+  (define-key f2-map (kbd "l") '(lambda()(interactive)(insert-char #x03bb)))
+
   ;;; misc
   (global-set-key (kbd "M-<up>") 'move-line-up)
   (global-set-key (kbd "M-<down>") 'move-line-down)
