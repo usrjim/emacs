@@ -1,4 +1,4 @@
-(defun my-depen ()
+(defun usrj/depen ()
   (require 'ace-jump-mode)
   (require 'expand-region)
   (require 'yasnippet)
@@ -7,7 +7,7 @@
   (autoload 'web-mode "web-mode")
   (autoload 'ecb-autoloads "ecb-autoloads"))
 
-(defun my-env ()
+(defun usrj/env ()
   (yas-reload-all)
   (setq cursor-type 'bar)
   (setq blink-cursor-interval 0)
@@ -54,9 +54,9 @@
     (set-frame-parameter (selected-frame) 'alpha '(95 65))
     (tool-bar-mode t)
     (scroll-bar-mode -1))
-  (my-keys))
+  (usrj/keys))
 
-(defun my-keys ()
+(defun usrj/keys ()
   ;;; c-c <-> c-i
   (keyboard-translate ?\C-i ?\C-c)
   (keyboard-translate ?\C-c ?\C-i)
@@ -74,7 +74,7 @@
   (define-prefix-command 'f12-map)
   (global-set-key (kbd "<f12>") 'f12-map)
   (define-key f12-map (kbd "s") 'save-buffer)
-  (define-key f12-map (kbd "r") 'ido-recentf-open)
+  (define-key f12-map (kbd "r") 'usrj/ido-recentf-open)
   (define-key f12-map (kbd "f") 'ido-find-file)
   (define-key f12-map (kbd "e") 'eval-last-sexp)
   (define-key f12-map (kbd "1") 'delete-other-windows)
@@ -99,16 +99,18 @@
   (define-key f2-map (kbd "u") 'beginning-of-visual-line)
   (define-key f2-map (kbd "i") 'end-of-visual-line)
   (define-key f2-map (kbd "l") '(lambda()(interactive)(insert-char #x03bb)))
-
+  
   ;;; misc
-  (global-set-key (kbd "M-<up>") 'move-line-up)
-  (global-set-key (kbd "M-<down>") 'move-line-down)
-  (global-set-key (kbd "M-RET") 'my-new-line)
-  (global-set-key (kbd "<f7>") 'list-func)
+  (global-set-key (kbd "M-<up>") 'usrj/move-line-up)
+  (global-set-key (kbd "M-<down>") 'usrj/move-line-down)
+  (global-set-key (kbd "M-RET") 'usrj/new-line)
+  (global-set-key (kbd "<f7>") 'usrj/list-func)
+  (global-set-key (kbd "<f11>") 'ace-jump-mode)
+  (global-set-key (kbd "C-8") 'usrj/asterisk)
   (global-set-key (kbd "C-<f11>") 'magit-status)
   (global-set-key (kbd "C-<f7>") 'ecb-activate))
 
-(defun my-menu () 
+(defun usrj/menu () 
   (define-key-after global-map [menu-bar usrj]
     (cons "usrj" (make-sparse-keymap "usrj")))
 
@@ -132,7 +134,7 @@
   (define-key global-map [menu-bar usrj usrj-one-win]
     '("One window" . delete-other-windows)))
 
-(defun my-tool-bar ()
+(defun usrj/tool-bar ()
   (tool-bar-add-item "separator" 'ignore 'ignore :help "" :enable nil)
   (tool-bar-add-item "connect" 'eshell 'usrj-tb-esh)
   (tool-bar-add-item "ezimage/box-minus" 'sos 'usrj-tb-sos)
@@ -143,10 +145,9 @@
   (tool-bar-add-item "up-arrow" 'split-window-below 'usrj-tb-win-below)
   (tool-bar-add-item "newsticker/narrow" 'list-buffers 'usrj-tb-list-bfs))
 
-(defun java-setup()
+(defun usrj/java-setup()
   (require 'eclim)
   (require 'company-emacs-eclim)
-  (global-eclim-mode)
   (company-emacs-eclim-setup)
   (setq help-at-pt-display-when-idle t)
   (setq help-at-pt-timer-delay 0.1)
@@ -178,7 +179,7 @@
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-show-documentation]
                                   '("Show Documentation" . eclim-java-show-documentation-for-current-element))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-problems]
-                                  '("Show Problems" . eclim-problems-open))
+                                   '("Show Problems" . eclim-problems-open))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-sp1] '("--"))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-import-organize]
                                   '("Import Organize" . eclim-java-import-organize))
@@ -187,7 +188,7 @@
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-run-class]
                                   '("Run Class" . eclim-run-class)))))
 
-(defun php-setup ()
+(defun usrj/php-setup ()
   (require 'php-mode)
   (add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))
   (add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode))
@@ -196,13 +197,13 @@
                               (setq tab-width 2)
                               (yas-minor-mode))))
 
-(defun php-scratch ()
+(defun usrj/php-scratch ()
   (interactive)
   (switch-to-buffer (get-buffer-create "*php scratch*"))
   (php-mode)
-  (local-set-key (kbd "<f6>") 'run-php-scratch))
+  (local-set-key (kbd "<f6>") 'usrj/run-php-scratch))
 
-(defun run-php-scratch (beg end)
+(defun usrj/run-php-scratch (beg end)
   (interactive "r")
   (if (get-buffer "*PHP*")
       (kill-buffer "*PHP*")
@@ -214,14 +215,14 @@
   (insert "\n\n")
   (switch-to-buffer-other-window "*php scratch*"))
 
-(defun kill-dired-buffers ()
+(defun usrj/kill-dired-buffers ()
   (interactive)
   (mapc (lambda (buffer)
           (when (eq 'dired-mode (buffer-local-value 'major-mode buffer))
             (kill-buffer buffer)))
         (buffer-list)))
 
-(defun go-setup ()
+(defun usrj/go-setup ()
   (require 'go-mode-load)
   (add-hook 'before-save-hook 'gofmt-before-save)
   (add-hook 'go-mode-hook '(lambda ()
@@ -229,24 +230,24 @@
                              (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
                              (local-set-key (kbd "<f7>") 'godoc)
                              (set (make-local-variable 'company-backends) '(company-go))
-                             (local-set-key (kbd "<f6>") 'go-run)
+                             (local-set-key (kbd "<f6>") 'usrj/go-run)
                              (yas-minor-mode))))
 
-(defun go-run ()
+(defun usrj/go-run ()
   (interactive)
   (compile (concat "go run " (buffer-file-name))))
 
-(defun list-func ()
+(defun usrj/list-func ()
   (interactive)
   (occur "function"))
 
-(defun ido-recentf-open ()
+(defun usrj/ido-recentf-open ()
   (interactive)
   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
       (message "Opening file...")
     (message "Aborting")))
 
-(defun move-line (n)
+(defun usrj/move-line (n)
   "Move the current line up or down by N lines."
   (interactive "p")
   (setq col (current-column))
@@ -259,21 +260,30 @@
     (forward-line -1)
     (forward-char col)))
 
-(defun move-line-up (n)
+(defun usrj/move-line-up (n)
   "Move the current line up by N lines."
   (interactive "p")
   (move-line (if (null n) -1 (- n))))
 
-(defun move-line-down (n)
+(defun usrj/move-line-down (n)
   "Move the current line down by N lines."
   (interactive "p")
   (move-line (if (null n) 1 n)))
 
-(defun my-new-line()
+(defun usrj/new-line()
   (interactive)
   (end-of-visual-line)
   (newline-and-indent))
 
-(defun my-blog-date()
+(defun usrj/blog-date()
   (interactive)
   (insert (format-time-string "%A, %B %d, %Y")))
+
+(defun usrj/asterisk()
+  (interactive)
+  (save-excursion
+    (backward-word)
+    (kill-ring-save (point) (progn
+                              (forward-word)
+                              (point)))
+    (occur (substring-no-properties (car kill-ring)))))
