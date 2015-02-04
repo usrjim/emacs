@@ -100,6 +100,8 @@
   (define-key f2-map (kbd "u") 'beginning-of-visual-line)
   (define-key f2-map (kbd "i") 'end-of-visual-line)
   (define-key f2-map (kbd "l") '(lambda()(interactive)(insert-char #x03bb)))
+  (define-key f2-map (kbd "<up>") 'usrj/copy-line-up)
+  (define-key f2-map (kbd "<down>") 'usrj/copy-line-down)
   
   ;;; misc
   (global-set-key (kbd "M-<up>") 'usrj/move-line-up)
@@ -295,10 +297,28 @@
 
 (defun usrj/md-link(url)
   (interactive (list(read-string "url: ")))
-  (let ((title))
+  (let (title buf)
     (with-temp-buffer
       (url-insert-file-contents url)
-      (string-match "<title>\\(.*\\)</title>" (buffer-string))
-      (setq title (match-string 1 (buffer-string)))
+      (setq buf (buffer-string))
+      (string-match "<title>\\(.*\\)</title>" buf)
+      (setq title (match-string 1 buf))
       (message ""))
     (insert (concat "[" title "](" url ")"))))
+
+(defun usrj/copy-line-up()
+  (interactive)
+  (let (line)
+    (setq line (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+    (forward-line -1)
+    (move-end-of-line nil)
+    (newline)
+    (insert line)))
+
+(defun usrj/copy-line-down()
+  (interactive)
+  (let (line)
+    (setq line (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+    (move-end-of-line nil)
+    (newline)
+    (insert line)))
