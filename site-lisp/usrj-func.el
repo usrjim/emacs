@@ -283,11 +283,8 @@
 (defun usrj/asterisk()
   (interactive)
   (save-excursion
-    (backward-word)
-    (kill-ring-save (point) (progn
-                              (forward-word)
-                              (point)))
-    (occur (substring-no-properties (car kill-ring)))))
+    (occur (thing-at-point 'symbol))
+    (other-window 1)))
 
 (defun usrj/copy-filename()
   (interactive)
