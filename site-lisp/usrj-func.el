@@ -292,3 +292,13 @@
     (when f
       (kill-new (buffer-file-name))
       (message "file path copied"))))
+
+(defun usrj/md-link(url)
+  (interactive (list(read-string "url: ")))
+  (let ((title))
+    (with-temp-buffer
+      (url-insert-file-contents url)
+      (string-match "<title>\\(.*\\)</title>" (buffer-string))
+      (setq title (match-string 1 (buffer-string)))
+      (message ""))
+    (insert (concat "[" title "](" url ")"))))
