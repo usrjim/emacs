@@ -82,6 +82,7 @@
   (define-key f12-map (kbd "3") 'split-window-right)
   (define-key f12-map (kbd "q") 'top-level)
   (define-key f12-map (kbd "b") 'ido-switch-buffer)
+  (define-key f12-map (kbd "c") 'usrj/copy-filename)
 
   ;;; f2 group, keys are on right hand side
   (define-prefix-command 'f2-map)
@@ -263,12 +264,12 @@
 (defun usrj/move-line-up (n)
   "Move the current line up by N lines."
   (interactive "p")
-  (move-line (if (null n) -1 (- n))))
+  (usrj/move-line (if (null n) -1 (- n))))
 
 (defun usrj/move-line-down (n)
   "Move the current line down by N lines."
   (interactive "p")
-  (move-line (if (null n) 1 n)))
+  (usrj/move-line (if (null n) 1 n)))
 
 (defun usrj/new-line()
   (interactive)
@@ -287,3 +288,10 @@
                               (forward-word)
                               (point)))
     (occur (substring-no-properties (car kill-ring)))))
+
+(defun usrj/copy-filename()
+  (interactive)
+  (let ((f (buffer-file-name)))
+    (when f
+      (kill-new (buffer-file-name))
+      (message "file path copied"))))
