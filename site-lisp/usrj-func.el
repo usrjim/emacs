@@ -195,6 +195,7 @@
   (require 'php-mode)
   (add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))
   (add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
   (add-hook 'php-mode-hook '(lambda()
                               (setq c-basic-offset 2)
                               (setq tab-width 2)
