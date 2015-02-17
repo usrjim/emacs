@@ -49,6 +49,7 @@
   (column-number-mode "on")
   ;; (electric-pair-mode 1)
   ;; (electric-indent-mode 1)
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   (when (window-system)
     ;; (nyan-mode 1)
     (set-frame-parameter (selected-frame) 'alpha '(95 65))
@@ -83,6 +84,7 @@
   (define-key f12-map (kbd "q") 'top-level)
   (define-key f12-map (kbd "b") 'ido-switch-buffer)
   (define-key f12-map (kbd "c") 'usrj/copy-filename)
+  (define-key f12-map (kbd "w") 'ace-window)
 
   ;;; f2 group, keys are on right hand side
   (define-prefix-command 'f2-map)
@@ -104,6 +106,7 @@
   (define-key f2-map (kbd "<down>") 'usrj/copy-line-down)
   
   ;;; misc
+  (global-set-key (kbd "<f5>") 'execute-extended-command)
   (global-set-key (kbd "M-<up>") 'usrj/move-line-up)
   (global-set-key (kbd "M-<down>") 'usrj/move-line-down)
   (global-set-key (kbd "M-RET") 'usrj/new-line)

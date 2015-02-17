@@ -16,7 +16,7 @@
 (setq default-directory "/opt")
 (setq frame-title-format "ed")
 
-(load "sos")
+;; (load "sos")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
