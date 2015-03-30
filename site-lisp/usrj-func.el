@@ -95,7 +95,7 @@
   (define-key mj-map (kbd "s") 'save-buffer)
   (define-key mj-map (kbd "u") 'beginning-of-visual-line)
   (define-key mj-map (kbd "w") 'ace-window)
-  (define-key f12-map (kbd "]") 'abort-recursive-edit)
+  (define-key mj-map (kbd "]") 'abort-recursive-edit)
   (define-key mj-map (kbd "/") 'occur)
   (define-key mj-map (kbd "\\") 'company-complete)
   (define-key mj-map (kbd "<down>") 'usrj/copy-line-down)
