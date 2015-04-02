@@ -3,12 +3,20 @@
   (require 'expand-region)
   (require 'yasnippet)
   (require 'powerline)
+  (require 'git-gutter-fringe)
+  (autoload 'scss-mode "scss-mode")
   (autoload 'emmet-mode "emmet-mode")
   (autoload 'markdown-mode "markdown-mode")
   (autoload 'web-mode "web-mode")
   (autoload 'ecb-autoloads "ecb-autoloads"))
 
 (defun usrj/env ()
+  (setq css-indent-offset 2)
+  (global-git-gutter-mode t)
+  (set-face-attribute 'mode-line nil
+                      :foreground "Black"
+                      :background "DarkOrange"
+                      :box nil)
   (yas-reload-all)
   (setq cursor-type 'bar)
   (set-language-environment "utf-8")
@@ -96,6 +104,8 @@
   (define-key mj-map (kbd "u") 'beginning-of-visual-line)
   (define-key mj-map (kbd "w") 'ace-window)
   (define-key mj-map (kbd "]") 'abort-recursive-edit)
+  (define-key mj-map (kbd ">") 'git-gutter:next-hunk)
+  (define-key mj-map (kbd "<") 'git-gutter:previous-hunk)
   (define-key mj-map (kbd "/") 'occur)
   (define-key mj-map (kbd "\\") 'company-complete)
   (define-key mj-map (kbd "<down>") 'usrj/copy-line-down)
