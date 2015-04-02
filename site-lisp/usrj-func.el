@@ -116,12 +116,9 @@
   (global-set-key (kbd "M-<up>") 'usrj/move-line-up)
   (global-set-key (kbd "M-<down>") 'usrj/move-line-down)
   (global-set-key (kbd "M-RET") 'usrj/new-line)
-  (global-set-key (kbd "M-p") 'cua-scroll-down)
-  (global-set-key (kbd "M-n") 'cua-scroll-up)
   (global-set-key (kbd "<f7>") 'usrj/list-func)
-  (global-set-key (kbd "<f11>") 'ace-jump-mode)
   (global-set-key (kbd "C-8") 'usrj/asterisk)
-  (global-set-key (kbd "C-<f11>") 'magit-status)
+  (global-set-key (kbd "<f11>") 'magit-status)
   (global-set-key (kbd "C-<f7>") 'ecb-activate))
 
 (defun usrj/menu () 
