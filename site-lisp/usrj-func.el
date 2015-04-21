@@ -2,8 +2,9 @@
   (require 'ace-jump-mode)
   (require 'expand-region)
   (require 'yasnippet)
-  (require 'powerline)
+;;  (require 'powerline)
   (require 'git-gutter-fringe)
+  (require 'evil-leader)
   (autoload 'scss-mode "scss-mode")
   (autoload 'emmet-mode "emmet-mode")
   (autoload 'markdown-mode "markdown-mode")
@@ -11,6 +12,8 @@
   (autoload 'ecb-autoloads "ecb-autoloads"))
 
 (defun usrj/env ()
+  (global-evil-leader-mode)
+  (evil-mode 1)
   (setq css-indent-offset 2)
   (global-git-gutter-mode t)
   (set-face-attribute 'mode-line nil
@@ -43,7 +46,7 @@
   (setq indent-line-function 'insert-tab)
   (setq-default indent-tabs-mode nil)
   (setq-default tab-always-indent t)
-  (setq-default tab-width 4)
+  (setq-default tab-width 2)
   (add-hook 'after-init-hook 'global-company-mode)
   (setq ace-jump-mode-case-fold nil)
   (setq ace-jump-mode-submode-list
@@ -63,9 +66,10 @@
     ;;(set-frame-parameter (selected-frame) 'alpha '(95 65))
     (tool-bar-mode -1)
     (scroll-bar-mode -1))
-  (usrj/keys))
+  (usrj/common-keys)
+  (usrj/evil-keys))
 
-(defun usrj/keys ()
+(defun usrj/common-keys ()
   ;;; c-c <-> c-i
   (keyboard-translate ?\C-i ?\C-c)
   (keyboard-translate ?\C-c ?\C-i)
@@ -79,6 +83,49 @@
   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 
+  ;;; misc
+  (global-set-key (kbd "<f5>") 'execute-extended-command)
+  (global-set-key (kbd "M-<up>") 'usrj/move-line-up)
+  (global-set-key (kbd "M-<down>") 'usrj/move-line-down)
+  (global-set-key (kbd "M-RET") 'usrj/new-line)
+  (global-set-key (kbd "<f7>") 'usrj/list-func)
+  (global-set-key (kbd "C-8") 'usrj/asterisk)
+  (global-set-key (kbd "<f11>") 'magit-status)
+  (global-set-key (kbd "C-<f7>") 'ecb-activate))
+
+(defun usrj/evil-keys ()
+  ;;; evil leader keys
+  (evil-leader/set-leader ",")
+  (evil-leader/set-key
+    "0" 'delete-window
+    "1" 'delete-other-windows
+    "2" 'split-window-below
+    "3" 'split-window-right
+    "b" 'ido-switch-buffer
+    "c" 'usrj/copy-filename
+    "e" 'eval-last-sexp
+    "f" 'ido-find-file
+    "h" 'back-to-indentation
+    "i" 'end-of-visual-line
+    "j" 'ace-jump-mode
+    "k" 'kill-this-buffer
+    "l" '(lambda()(interactive)(insert-char #x03bb))
+    "m" 'mc/mark-all-like-this
+    "o" 'other-window
+    "p" 'projectile-command-map
+    "q" 'top-level
+    "r" 'usrj/ido-recentf-open
+    "s" 'save-buffer
+    "u" 'beginning-of-visual-line
+    "w" 'ace-window
+    "]" 'abort-recursive-edit
+    ">" 'git-gutter:next-hunk
+    "<" 'git-gutter:previous-hunk
+    "/" 'occur
+    "\\" 'company-complete
+    ))
+
+(defun usrj/keys ()
   ;;; M-j group
   (define-prefix-command 'mj-map)
   (global-set-key (kbd "M-j") 'mj-map)
@@ -109,17 +156,7 @@
   (define-key mj-map (kbd "/") 'occur)
   (define-key mj-map (kbd "\\") 'company-complete)
   (define-key mj-map (kbd "<down>") 'usrj/copy-line-down)
-  (define-key mj-map (kbd "<up>") 'usrj/copy-line-up)
-
-  ;;; misc
-  (global-set-key (kbd "<f5>") 'execute-extended-command)
-  (global-set-key (kbd "M-<up>") 'usrj/move-line-up)
-  (global-set-key (kbd "M-<down>") 'usrj/move-line-down)
-  (global-set-key (kbd "M-RET") 'usrj/new-line)
-  (global-set-key (kbd "<f7>") 'usrj/list-func)
-  (global-set-key (kbd "C-8") 'usrj/asterisk)
-  (global-set-key (kbd "<f11>") 'magit-status)
-  (global-set-key (kbd "C-<f7>") 'ecb-activate))
+  (define-key mj-map (kbd "<up>") 'usrj/copy-line-up))
 
 (defun usrj/menu () 
   (define-key-after global-map [menu-bar usrj]
