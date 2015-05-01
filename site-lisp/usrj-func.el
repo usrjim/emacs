@@ -37,7 +37,7 @@
   (setq make-backup-files nil)
   (setq auto-save-default nil)
   (setq inhibit-startup-message t)
-  (cua-mode t)
+  ;; (cua-mode t)
   ;; (projectile-global-mode)
   (ido-mode 1)
   (setq ido-enable-flex-matching t)
