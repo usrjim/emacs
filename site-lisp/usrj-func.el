@@ -118,6 +118,7 @@
     "s" 'save-buffer
     "u" 'beginning-of-visual-line
     "w" 'ace-window
+    "x" 'execute-extended-command
     "]" 'abort-recursive-edit
     ">" 'git-gutter:next-hunk
     "<" 'git-gutter:previous-hunk
