@@ -105,6 +105,7 @@
     "c" 'usrj/copy-filename
     "e" 'eval-last-sexp
     "f" 'ido-find-file
+    "g" 'magit-status
     "h" 'back-to-indentation
     "i" 'end-of-visual-line
     "j" 'ace-jump-mode
