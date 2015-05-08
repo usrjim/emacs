@@ -118,6 +118,7 @@
     "r" 'usrj/ido-recentf-open
     "s" 'save-buffer
     "u" 'beginning-of-visual-line
+    "v" 'ido-find-alternate-file
     "w" 'ace-window
     "x" 'execute-extended-command
     "]" 'abort-recursive-edit
