@@ -1,9 +1,32 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-(add-to-list 'load-path "~/.emacs.d/site-lisp")
 
+(package-initialize)
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar my-packages '(
+                      clojure-mode
+                      company-go
+                      evil
+                      evil-leader
+                      expand-region
+                      git-gutter-fringe
+                      magit
+                      markdown-mode
+                      multiple-cursors
+                      web-mode
+                      yasnippet
+                      slime
+                      ))
+
+(dolist (p my-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
 (load "usrj-func")
 (usrj/depen)
 (usrj/env)
@@ -11,10 +34,12 @@
 (usrj/tool-bar)
 (usrj/php-setup)
 (usrj/go-setup)
-(usrj/java-setup)
+;;(usrj/java-setup)
 
-(setq default-directory "/opt")
-(setq frame-title-format "ed")
+(setq default-directory "~/")
+(blink-cursor-mode -1)
+(setq cursor-type 'bar)
+(evil-mode 1)
 
 ;; (load "sos")
 
