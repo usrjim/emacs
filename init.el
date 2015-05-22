@@ -11,12 +11,13 @@
                       clojure-mode
                       company-go
                       emacs-eclim
+                      cider
                       evil
                       evil-leader
-                      evil-cleverparens
                       expand-region
                       git-gutter-fringe
                       magit
+                      paredit
                       markdown-mode
                       multiple-cursors
                       web-mode
