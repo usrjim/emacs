@@ -77,6 +77,7 @@
   (keyboard-translate ?\C-x ?\C-m)
 
   (global-set-key (kbd "C-=") 'er/expand-region)
+  (global-set-key (kbd "C-\\") 'company-complete)
 
   ;;; multiple cursors
   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -125,7 +126,6 @@
     ">" 'git-gutter:next-hunk
     "<" 'git-gutter:previous-hunk
     "/" 'occur
-    "\\" 'company-complete
     ))
 
 (defun usrj/keys ()

@@ -10,8 +10,10 @@
 (defvar my-packages '(
                       clojure-mode
                       company-go
+                      emacs-eclim
                       evil
                       evil-leader
+                      evil-cleverparens
                       expand-region
                       git-gutter-fringe
                       magit
