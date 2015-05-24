@@ -95,6 +95,25 @@
   (global-set-key (kbd "C-<f7>") 'ecb-activate))
 
 (defun usrj/evil-keys ()
+  ;;; esc quits
+  (define-key evil-normal-state-map [escape] 'keyboard-quit)
+  (define-key evil-visual-state-map [escape] 'keyboard-quit)
+  (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+  (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+
+   ;;; emacs normal keys
+  (define-key evil-normal-state-map "\C-y" 'yank)
+  (define-key evil-insert-state-map "\C-y" 'yank)
+  (define-key evil-visual-state-map "\C-y" 'yank)
+  (define-key evil-insert-state-map "\C-e" 'end-of-line)
+  (define-key evil-normal-state-map "\C-w" 'evil-delete)
+  (define-key evil-insert-state-map "\C-w" 'evil-delete)
+  (define-key evil-insert-state-map "\C-r" 'search-backward)
+  (define-key evil-visual-state-map "\C-w" 'evil-delete)
+
   ;;; evil leader keys
   (evil-leader/set-leader ",")
   (evil-leader/set-key
@@ -187,14 +206,13 @@
 
 (defun usrj/tool-bar ()
   (tool-bar-add-item "separator" 'ignore 'ignore :help "" :enable nil)
-  (tool-bar-add-item "connect" 'eshell 'usrj-tb-esh)
-  (tool-bar-add-item "ezimage/box-minus" 'sos 'usrj-tb-sos)
-  (tool-bar-add-item "ezimage/bits" 'shell-command 'usrj-tb-shell)
-  (tool-bar-add-item "ezimage/page" 'delete-other-windows 'usrj-tb-one-win)
-  (tool-bar-add-item "ezimage/page-minus" 'delete-window 'usrj-tb-del-win)
-  (tool-bar-add-item "right-arrow" 'split-window-right 'usrj-tb-win-right)
-  (tool-bar-add-item "up-arrow" 'split-window-below 'usrj-tb-win-below)
-  (tool-bar-add-item "newsticker/narrow" 'list-buffers 'usrj-tb-list-bfs))
+  (tool-bar-add-item "~/.emacs.d/img/terminal" 'eshell 'usrj-tb-esh)
+  (tool-bar-add-item "~/.emacs.d/img/binary" 'shell-command 'usrj-tb-shell)
+  (tool-bar-add-item "~/.emacs.d/img/maximize" 'delete-other-windows 'usrj-tb-one-win)
+  (tool-bar-add-item "~/.emacs.d/img/minimize" 'delete-window 'usrj-tb-del-win)
+  (tool-bar-add-item "~/.emacs.d/img/h-split" 'split-window-right 'usrj-tb-win-right)
+  (tool-bar-add-item "~/.emacs.d/img/v-split" 'split-window-below 'usrj-tb-win-below)
+  (tool-bar-add-item "~/.emacs.d/img/list" 'list-buffers 'usrj-tb-list-bfs))
 
 (defun usrj/java-setup()
   (require 'eclim)
