@@ -23,6 +23,7 @@
                       web-mode
                       yasnippet
                       slime
+                      undo-tree
                       ))
 
 (dolist (p my-packages)

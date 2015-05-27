@@ -2,6 +2,7 @@
   (require 'ace-jump-mode)
   (require 'expand-region)
   (require 'yasnippet)
+  (require 'undo-tree)
 ;;  (require 'powerline)
   (require 'git-gutter-fringe)
   (require 'evil-leader)
@@ -12,6 +13,7 @@
   (autoload 'ecb-autoloads "ecb-autoloads"))
 
 (defun usrj/env ()
+  (global-undo-tree-mode)
   (global-evil-leader-mode)
   (evil-mode 1)
   (setq css-indent-offset 2)
@@ -76,6 +78,10 @@
   (keyboard-translate ?\C-m ?\C-x)
   (keyboard-translate ?\C-x ?\C-m)
 
+  (defalias 'redo 'undo-tree-redo)
+  (global-set-key (kbd "C-z") 'undo)
+  (global-set-key (kbd "C-S-z") 'redo)
+  
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-\\") 'company-complete)
 
@@ -172,6 +178,7 @@
   (define-key mj-map (kbd "s") 'save-buffer)
   (define-key mj-map (kbd "u") 'beginning-of-visual-line)
   (define-key mj-map (kbd "w") 'ace-window)
+  (define-key mj-map (kbd "z") 'evil-emacs-state)
   (define-key mj-map (kbd "]") 'abort-recursive-edit)
   (define-key mj-map (kbd ">") 'git-gutter:next-hunk)
   (define-key mj-map (kbd "<") 'git-gutter:previous-hunk)
@@ -213,7 +220,8 @@
   (tool-bar-add-item "~/.emacs.d/img/v-split" 'split-window-right 'usrj-tb-win-right)
   (tool-bar-add-item "~/.emacs.d/img/h-split" 'split-window-below 'usrj-tb-win-below)
   (tool-bar-add-item "~/.emacs.d/img/list" 'list-buffers 'usrj-tb-list-bfs)
-  (tool-bar-add-item "~/.emacs.d/img/git" 'magit-status 'usrj-tb-magit))
+  (tool-bar-add-item "~/.emacs.d/img/git" 'magit-status 'usrj-tb-magit)
+  (tool-bar-add-item "~/.emacs.d/img/tree" 'undo-tree-visualize 'usrj-tb-undo-tree))
 
 (defun usrj/java-setup()
   (require 'eclim)

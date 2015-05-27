@@ -1,0 +1,34 @@
+/* XPM */
+static char *tree[] = {
+/* columns rows colors chars-per-pixel */
+"24 24 4 1 ",
+"  c black",
+". c #1B2636",
+"X c #5D81B7",
+"o c None",
+/* pixels */
+"oooooooooooooooooooooooo",
+"oo.......ooooooooooooooo",
+"oo.XXXXX.ooooooooooooooo",
+"oo.XXXXX.ooooooooooooooo",
+"oo.......ooooooooooooooo",
+"ooooo oooooooooooooooooo",
+"oooooo    oooooooooooooo",
+"oooooooooo ooooooooooooo",
+"ooooooo.......ooooo  ooo",
+"ooooooo.XXXXX.oooo    oo",
+"ooooooo.XXXXX.ooo      o",
+"ooooooo.......oo        ",
+"oooooooooo oooooooo  ooo",
+"oooooooooo oooooooo  ooo",
+"ooooooo.......ooooo  ooo",
+"ooooooo.XXXXX.ooooo  ooo",
+"ooooooo.XXXXX.ooooo  ooo",
+"ooooooo.......ooooo  ooo",
+"oooooooooo oooooooo  ooo",
+"oooooooooo oooooooo  ooo",
+"ooooooo.......ooooo  ooo",
+"ooooooo.XXXXX.ooooo  ooo",
+"ooooooo.XXXXX.ooooo  ooo",
+"ooooooo.......ooooo  ooo"
+};
