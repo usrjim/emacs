@@ -269,8 +269,11 @@
                                   '("Run Class" . eclim-run-class)))))
 
 (defun usrj/cider-setup()
+  (add-hook 'clojure-mode-hook #'paredit-mode)
+  (add-hook 'cider-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
-  (add-hook 'cider-repl-mode-hook #'paredit-mode))
+  (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+  (setq cider-auto-select-error-buffer nil))
 
 (defun usrj/php-setup ()
   (require 'php-mode)
