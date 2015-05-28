@@ -266,6 +266,10 @@
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-run-class]
                                   '("Run Class" . eclim-run-class)))))
 
+(defun usrj/cider-setup()
+  (add-hook 'cider-repl-mode-hook #'paredit-mode)
+  (add-hook 'cider-repl-mode-hook #'paredit-mode))
+
 (defun usrj/php-setup ()
   (require 'php-mode)
   (add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))

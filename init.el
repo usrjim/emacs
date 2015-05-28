@@ -18,6 +18,7 @@
                       git-gutter-fringe
                       magit
                       paredit
+                      rainbow-delimiters
                       markdown-mode
                       multiple-cursors
                       web-mode
@@ -38,6 +39,7 @@
 (usrj/tool-bar)
 (usrj/php-setup)
 (usrj/go-setup)
+(usrj/cider-setup)
 ;;(usrj/java-setup)
 
 (setq default-directory "~/")
