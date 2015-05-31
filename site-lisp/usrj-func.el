@@ -221,6 +221,7 @@
   (tool-bar-add-item "~/.emacs.d/img/h-split" 'split-window-below 'usrj-tb-win-below)
   (tool-bar-add-item "~/.emacs.d/img/list" 'list-buffers 'usrj-tb-list-bfs)
   (tool-bar-add-item "~/.emacs.d/img/git" 'magit-status 'usrj-tb-magit)
+  (tool-bar-add-item "~/.emacs.d/img/linum" 'linum-mode 'usrj-tb-linum)
   (tool-bar-add-item "~/.emacs.d/img/tree" 'undo-tree-visualize 'usrj-tb-undo-tree)
   (tool-bar-add-item "~/.emacs.d/img/paredit" 'paredit-mode 'usrj-tb-paredit)
   (tool-bar-add-item "~/.emacs.d/img/cider" 'cider-jack-in 'usrj-tb-cider))
