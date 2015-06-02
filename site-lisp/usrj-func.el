@@ -121,7 +121,7 @@
   (define-key evil-visual-state-map "\C-w" 'evil-delete)
 
   ;;; evil leader keys
-  (evil-leader/set-leader ",")
+  (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
     "0" 'delete-window
     "1" 'delete-other-windows
