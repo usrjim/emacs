@@ -240,6 +240,8 @@
                                 (local-set-key (kbd "<f6>") 'eclim-run-class)
                                 (define-key-after global-map [menu-bar usrj-eclim]
                                   (cons "usrj-eclim" (make-sparse-keymap "usrj-eclim")))
+                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-project-goto]
+                                  '("Project Goto" . eclim-project-goto)) 
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-project-build]
                                   '("Project Build" . eclim-project-build)) 
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-project-create]

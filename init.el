@@ -11,6 +11,7 @@
                       clojure-mode
                       company-go
                       emacs-eclim
+                      gradle-mode
                       cider
                       evil
                       evil-leader
