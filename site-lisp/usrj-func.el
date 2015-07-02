@@ -191,6 +191,12 @@
   (define-key-after global-map [menu-bar usrj]
     (cons "usrj" (make-sparse-keymap "usrj")))
 
+  (define-key global-map [menu-bar usrj usrj-eclim]
+    '("EClim project goto" . eclim-project-goto))
+  (define-key global-map [menu-bar usrj usrj-cider]
+    '("Cider jack in" . cider-jack-in))
+
+  (define-key global-map [menu-bar usrj usrj-sp0] '("--"))
   (define-key global-map [menu-bar usrj usrj-slime]
     '("SLIME" . slime))
   (define-key global-map [menu-bar usrj usrj-erc]
