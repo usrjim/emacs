@@ -16,10 +16,12 @@
   (global-undo-tree-mode)
   (global-evil-leader-mode)
   (evil-mode 1)
+  (evil-set-initial-state 'magit-status-mode 'emacs)
   (evil-set-initial-state 'magit-log-edit-mode 'emacs)
   (evil-set-initial-state 'magit-popup-mode 'emacs)
   (evil-set-initial-state 'nav-mode 'emacs)
   (evil-set-initial-state 'grep-mode 'emacs)
+  (evil-set-initial-state 'cider-repl-mode 'emacs)
   (setq css-indent-offset 2)
   (global-git-gutter-mode t)
   (set-face-attribute 'mode-line nil
