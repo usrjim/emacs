@@ -18,6 +18,7 @@
                       expand-region
                       git-gutter-fringe
                       magit
+                      projectile
                       paredit
                       rainbow-delimiters
                       markdown-mode
