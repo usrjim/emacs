@@ -28,6 +28,12 @@
                       :foreground "Black"
                       :background "DarkOrange"
                       :box nil)
+  (add-hook 'after-make-frame-functions
+            '(lambda (frame)
+               (select-frame frame)
+               (if window-system
+                   nil
+                 (set-frame-parameter nil 'background-color "black"))))
   (yas-reload-all)
   (setq cursor-type 'bar)
   (set-language-environment "utf-8")
