@@ -49,6 +49,10 @@
 (setq cursor-type 'bar)
 (evil-mode 1)
 
+(require 'server)
+(unless (server-running-p)
+  (server-start)) 
+
 ;; (load "sos")
 
 (custom-set-variables
