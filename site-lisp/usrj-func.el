@@ -78,7 +78,7 @@
   (when (window-system)
     ;; (nyan-mode 1)
     ;;(set-frame-parameter (selected-frame) 'alpha '(95 65))
-    (tool-bar-mode -1)
+    (tool-bar-mode 1)
     (scroll-bar-mode -1))
   (usrj/common-keys)
   (usrj/evil-keys))
