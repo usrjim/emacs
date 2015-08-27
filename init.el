@@ -12,7 +12,6 @@
                       company-go
                       emacs-eclim
                       groovy-mode
-                      puppet-mode
                       cider
                       evil
                       evil-leader
@@ -33,6 +32,20 @@
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+(defvar infra-packages '(
+                      puppet-mode
+                      nginx-mode
+                      vcl-mode
+                      ))
+
+(setq install-infra-packges nil)
+
+(when install-infra-packges
+  (dolist (p infra-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 (load "usrj-func")
