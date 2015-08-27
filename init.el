@@ -12,6 +12,7 @@
                       company-go
                       emacs-eclim
                       groovy-mode
+                      puppet-mode
                       cider
                       evil
                       evil-leader
