@@ -16,6 +16,7 @@
   (global-undo-tree-mode)
   (global-evil-leader-mode)
   (evil-mode 1)
+  (setq evil-default-state 'insert)
   (evil-set-initial-state 'magit-status-mode 'emacs)
   (evil-set-initial-state 'magit-log-edit-mode 'emacs)
   (evil-set-initial-state 'magit-popup-mode 'emacs)

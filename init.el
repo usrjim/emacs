@@ -74,11 +74,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
  '(custom-enabled-themes (quote (tango-dark)))
- '(tool-bar-style (quote image))
- '(eclim-eclipse-dirs '("/opt/eclipse"))
- '(eclim-executable "/opt/eclipse/eclim"))
+ '(eclim-eclipse-dirs (quote ("/opt/eclipse")))
+ '(eclim-executable "/opt/eclipse/eclim")
+ '(evil-toggle-key "C-`")
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(show-paren-mode t)
+ '(tool-bar-style (quote image)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
