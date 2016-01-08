@@ -40,6 +40,7 @@
                       ))
 
 (setq install-infra-packges nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 (when install-infra-packges
   (dolist (p infra-packages)
@@ -63,9 +64,9 @@
 (setq cursor-type 'bar)
 (evil-mode 1)
 
-(require 'server)
-(unless (server-running-p)
-  (server-start)) 
+;;(require 'server)
+;;(unless (server-running-p)
+;;  (server-start)) 
 
 ;; (load "sos")
 
