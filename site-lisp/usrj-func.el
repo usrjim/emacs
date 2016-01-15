@@ -24,6 +24,7 @@
   (evil-set-initial-state 'grep-mode 'emacs)
   (evil-set-initial-state 'cider-error-mode 'emacs)
   (evil-set-initial-state 'cider-repl-mode 'emacs)
+  (evil-set-initial-state 'eshell-mode 'emacs)
   (setq css-indent-offset 2)
   (global-git-gutter-mode t)
   (set-face-attribute 'mode-line nil
