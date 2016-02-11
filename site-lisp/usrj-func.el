@@ -26,6 +26,7 @@
   (evil-set-initial-state 'cider-repl-mode 'emacs)
   (evil-set-initial-state 'eshell-mode 'emacs)
   (setq css-indent-offset 2)
+  (setq ring-bell-function 'ignore)
   (global-git-gutter-mode t)
   (set-face-attribute 'mode-line nil
                       :foreground "Black"
