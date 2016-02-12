@@ -82,7 +82,8 @@
   (when (window-system)
     ;; (nyan-mode 1)
     ;;(set-frame-parameter (selected-frame) 'alpha '(95 65))
-    (tool-bar-mode 1)
+    (tool-bar-mode -1)
+    (menu-bar-mode -1)
     (scroll-bar-mode -1))
   (usrj/common-keys)
   (usrj/evil-keys))
@@ -143,6 +144,8 @@
     "1" 'delete-other-windows
     "2" 'split-window-below
     "3" 'split-window-right
+    "7" 'menu-bar-mode
+    "8" 'tool-bar-mode
     "b" 'ido-switch-buffer
     "c" 'usrj/copy-filename
     "e" 'eval-last-sexp
