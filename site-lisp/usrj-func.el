@@ -142,12 +142,14 @@
   (evil-leader/set-key
     "0" 'delete-window
     "1" 'delete-other-windows
-    "2" 'split-window-below
-    "3" 'split-window-right
+    "2" 'scroll-up
+    "3" 'scroll-down
     "7" 'menu-bar-mode
     "8" 'tool-bar-mode
+    "a" 'beginning-of-visual-line
     "b" 'ido-switch-buffer
     "c" 'usrj/copy-filename
+    "d" 'scroll-up
     "e" 'eval-last-sexp
     "f" 'ido-find-file
     "g" 'magit-status
@@ -155,20 +157,24 @@
     "i" 'end-of-visual-line
     "j" 'ace-jump-mode
     "k" 'kill-this-buffer
-    "l" '(lambda()(interactive)(insert-char #x03bb))
+    "l" 'cider-load-buffer
     "m" 'mc/mark-all-like-this
+    "n" 'cider-repl-set-ns
     "o" 'other-window
     "p" 'projectile-command-map
     "q" 'top-level
     "r" 'usrj/ido-recentf-open
     "s" 'save-buffer
-    "u" 'beginning-of-visual-line
+    "u" 'scroll-down
     "v" 'ido-find-alternate-file
     "w" 'ace-window
     "x" 'execute-extended-command
+    "z" 'cider-switch-to-repl-buffer
     "]" 'abort-recursive-edit
     ">" 'git-gutter:next-hunk
     "<" 'git-gutter:previous-hunk
+    "-" 'usrj/vsplit
+    "|" 'usrj/split
     "/" 'occur
     ))
 
@@ -437,3 +443,16 @@
     (move-end-of-line nil)
     (newline)
     (insert line)))
+
+(defun usrj/vsplit ()
+  (interactive)
+  (split-window-vertically)
+  (other-window 1 nil)
+  (ido-find-file))
+
+(defun usrj/split ()
+  (interactive)
+  (split-window-horizontally)
+  (other-window 1 nil)
+  (ido-find-file))
+ 
