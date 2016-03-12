@@ -27,6 +27,7 @@
                       yasnippet
                       slime
                       undo-tree
+                      key-chord
                       ))
 
 (dolist (p my-packages)
