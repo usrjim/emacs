@@ -164,7 +164,7 @@
     "p" 'projectile-command-map
     "q" 'top-level
     "r" 'usrj/ido-recentf-open
-    "s" 'save-buffer
+    "s" 'occur
     "u" 'scroll-down
     "v" 'ido-find-alternate-file
     "w" 'ace-window
