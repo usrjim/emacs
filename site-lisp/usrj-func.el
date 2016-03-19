@@ -18,6 +18,8 @@
   (global-evil-leader-mode)
   (evil-mode 1)
   (setq evil-default-state 'normal)
+  (setq evil-normal-state-cursor '(box "purple")
+      evil-emacs-state-cursor '((bar . 3) "yellow"))
   (defalias 'evil-insert-state 'evil-emacs-state)
   (key-chord-mode 1)
   (key-chord-define evil-emacs-state-map  "jk" 'evil-normal-state)
