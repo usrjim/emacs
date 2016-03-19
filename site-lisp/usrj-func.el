@@ -20,6 +20,7 @@
   (key-chord-mode 1)
   (key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
   (setq evil-default-state 'normal)
+  (defalias 'evil-insert-state 'evil-emacs-state)
   (evil-set-initial-state 'magit-status-mode 'emacs)
   (evil-set-initial-state 'magit-log-edit-mode 'emacs)
   (evil-set-initial-state 'magit-popup-mode 'emacs)
