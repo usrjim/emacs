@@ -1,6 +1,7 @@
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+;;(setq package-check-signature nil)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize)
 
@@ -50,7 +51,9 @@
 
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
+
 (load "usrj-func")
+(load "retro-green-theme")
 (usrj/depen)
 (usrj/env)
 (usrj/menu)
@@ -78,7 +81,7 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-enabled-themes (quote (retro-green)))
  '(eclim-eclipse-dirs (quote ("/opt/eclipse")))
  '(eclim-executable "/opt/eclipse/eclim")
  '(evil-toggle-key "C-`")

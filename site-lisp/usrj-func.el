@@ -3,7 +3,6 @@
   (require 'expand-region)
   (require 'yasnippet)
   (require 'undo-tree)
-;;  (require 'powerline)
   (require 'git-gutter-fringe)
   (require 'evil-leader)
   (require 'key-chord)
