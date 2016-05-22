@@ -43,17 +43,16 @@
 
 (setq install-infra-packges nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
+(setq key-chord-two-keys-delay 0.5)
 
 (when install-infra-packges
   (dolist (p infra-packages)
     (when (not (package-installed-p p))
       (package-install p))))
 
-
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 
 (load "usrj-func")
-(load "retro-green-theme")
 (usrj/depen)
 (usrj/env)
 (usrj/menu)
@@ -81,7 +80,7 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(custom-enabled-themes (quote (retro-green)))
+ '(custom-enabled-themes (quote (tango-dark)))
  '(eclim-eclipse-dirs (quote ("/opt/eclipse")))
  '(eclim-executable "/opt/eclipse/eclim")
  '(evil-toggle-key "C-`")
