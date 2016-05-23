@@ -44,6 +44,8 @@
 (setq install-infra-packges nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
 (setq key-chord-two-keys-delay 0.5)
+(setq cider-diet-path (expand-file-name (concat (getenv "HOME")
+                                                "/homebin/cider-diet-0.1.0-SNAPSHOT-standalone.jar")))
 
 (when install-infra-packges
   (dolist (p infra-packages)
