@@ -10,6 +10,7 @@
   (autoload 'emmet-mode "emmet-mode")
   (autoload 'markdown-mode "markdown-mode")
   (autoload 'web-mode "web-mode")
+  (autoload 'kotlin-mode "kotlin-mode")
   (autoload 'ecb-autoloads "ecb-autoloads"))
 
 (defun usrj/env ()
@@ -310,6 +311,10 @@
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
   (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
   (setq cider-auto-select-error-buffer nil))
+
+(defun usrj/kotlin-setup()
+  (add-to-list 'auto-mode-alist '("\\.kt\\'" . kotlin-mode))
+  (add-to-list 'auto-mode-alist '("\\.kts\\'" . kotlin-mode)))
 
 (defun usrj/php-setup ()
   (require 'php-mode)

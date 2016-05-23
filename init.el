@@ -60,6 +60,7 @@
 (usrj/php-setup)
 (usrj/go-setup)
 (usrj/cider-setup)
+(usrj/kotlin-setup)
 ;;(usrj/java-setup)
 
 (setq default-directory "~/")
