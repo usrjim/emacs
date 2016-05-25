@@ -58,6 +58,7 @@
 (usrj/depen)
 (usrj/env)
 (usrj/menu)
+(usrj/keys)
 (usrj/tool-bar)
 (usrj/php-setup)
 (usrj/go-setup)
