@@ -19,7 +19,7 @@
   (evil-mode 1)
   (setq evil-default-state 'normal)
   (setq evil-normal-state-cursor '(box "purple")
-        evil-emacs-state-cursor '((bar . 3) "yellow"))
+        evil-emacs-state-cursor '((bar . 2) "red"))
   (defalias 'evil-insert-state 'evil-emacs-state)
   ;;(key-chord-mode 1)
   ;;(key-chord-define evil-emacs-state-map  "jk" 'evil-normal-state)
@@ -166,11 +166,12 @@
     "p" 'projectile-command-map
     "q" 'top-level
     "r" 'usrj/ido-recentf-open
-    "s" 'occur
+    "s" 'save-buffer
     "u" 'scroll-down
     "v" 'ido-find-alternate-file
     "w" 'ace-window
     "x" 'execute-extended-command
+    "y" 'occur
     "z" 'cider-switch-to-repl-buffer
     "]" 'abort-recursive-edit
     ">" 'git-gutter:next-hunk
@@ -208,11 +209,12 @@
   (define-key mj-map (kbd "p") 'projectile-command-map)
   (define-key mj-map (kbd "q") 'top-level)
   (define-key mj-map (kbd "r") 'usrj/ido-recentf-open)
-  (define-key mj-map (kbd "s") 'occur)
+  (define-key mj-map (kbd "s") 'save-buffer)
   (define-key mj-map (kbd "u") 'scroll-down)
   (define-key mj-map (kbd "v") 'ido-find-alternate-file)
   (define-key mj-map (kbd "w") 'ace-window)
   (define-key mj-map (kbd "x") 'execute-extended-command)
+  (define-key mj-map (kbd "y") 'occur)
   (define-key mj-map (kbd "z") 'cider-switch-to-repl-buffer)
   (define-key mj-map (kbd "]") 'abort-recursive-edit)
   (define-key mj-map (kbd ">") 'git-gutter:next-hunk)
