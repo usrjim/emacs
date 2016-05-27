@@ -8,11 +8,11 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(
-                      clojure-mode
+(defvar my-packages '(clojure-mode
                       company-go
                       emacs-eclim
                       groovy-mode
+                      ace-window
                       cider
                       evil
                       evil-leader
@@ -28,18 +28,15 @@
                       yasnippet
                       slime
                       undo-tree
-                      key-chord
-                      ))
+                      key-chord))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
-(defvar infra-packages '(
-                      puppet-mode
+(defvar infra-packages '(puppet-mode
                       nginx-mode
-                      vcl-mode
-                      ))
+                      vcl-mode))
 
 (setq install-infra-packges nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
