@@ -90,13 +90,18 @@
   (usrj/common-keys)
   (usrj/evil-keys))
 
-(defun usrj/common-keys ()
+(defun usrj/translate-prefix-keys ()
   ;;; c-c <-> c-i
-  (keyboard-translate ?\C-i ?\C-c)
-  (keyboard-translate ?\C-c ?\C-i)
-  (keyboard-translate ?\C-m ?\C-x)
-  (keyboard-translate ?\C-x ?\C-m)
+  (when (display-graphic-p)
+    (keyboard-translate ?\C-i ?\C-c)
+    (keyboard-translate ?\C-c ?\C-i)
+    (keyboard-translate ?\C-m ?\C-x)
+    (keyboard-translate ?\C-x ?\C-m)))
 
+(defun usrj/common-keys ()
+  (usrj/translate-prefix-keys)
+  (add-hook 'server-visit-hook 'usrj/translate-prefix-keys)
+ 
   (defalias 'redo 'undo-tree-redo)
   (global-set-key (kbd "C-z") 'undo)
   (global-set-key (kbd "C-S-z") 'redo)
