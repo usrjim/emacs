@@ -43,6 +43,7 @@
 (setq key-chord-two-keys-delay 0.5)
 (setq cider-diet-path (expand-file-name (concat (getenv "HOME")
                                                 "/homebin/cider-diet-0.1.0-SNAPSHOT-standalone.jar")))
+(setq clojure-jar-path "/opt/clojure/clojure-1.8.0.jar")
 
 (when install-infra-packges
   (dolist (p infra-packages)
@@ -59,7 +60,7 @@
 (usrj/tool-bar)
 (usrj/php-setup)
 (usrj/go-setup)
-(usrj/cider-setup)
+(usrj/clojure-setup)
 (usrj/kotlin-setup)
 ;;(usrj/java-setup)
 

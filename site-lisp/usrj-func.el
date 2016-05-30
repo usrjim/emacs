@@ -289,7 +289,7 @@
                                (eclim-mode t)
                                (yas-minor-mode)))
   (add-hook 'eclim-mode-hook '(lambda ()
-                                (local-set-key (kbd "<f6>") 'eclim-run-class)
+                                (local-set-key (kbd "C-c C-r") 'eclim-run-class)
                                 (define-key-after global-map [menu-bar usrj-eclim]
                                   (cons "usrj-eclim" (make-sparse-keymap "usrj-eclim")))
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-project-goto]
@@ -323,16 +323,36 @@
                                 (define-key global-map [menu-bar usrj-eclim usrj-eclim-run-class]
                                   '("Run Class" . eclim-run-class)))))
 
-(defun usrj/cider-setup()
-  (add-hook 'clojure-mode-hook #'paredit-mode)
+(defun usrj/quick-eval-clojure ()
+  (interactive)
+  (save-buffer)
+  (let ((f (buffer-file-name)))
+    (message (format "evaluating %s" f))
+    (shell-command
+     (format "java -cp %s clojure.main %s" clojure-jar-path (shell-quote-argument f)))))
+
+(defun usrj/clojure-setup()
   (add-hook 'cider-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
   (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
-  (setq cider-auto-select-error-buffer nil))
+  (setq cider-auto-select-error-buffer nil)
+  (add-hook 'clojure-mode-hook '(lambda ()
+                                  (paredit-mode) 
+                                  (local-set-key (kbd "C-c C-r") 'usrj/quick-eval-clojure))))
+
+(defun usrj/run-kotlin-script ()
+  (interactive)
+  (save-buffer)
+  (let ((f (buffer-file-name)))
+    (message (format "running %s" f))
+    (shell-command
+     (format "kotlinc -script %s" (shell-quote-argument f)))))
 
 (defun usrj/kotlin-setup()
   (add-to-list 'auto-mode-alist '("\\.kt\\'" . kotlin-mode))
-  (add-to-list 'auto-mode-alist '("\\.kts\\'" . kotlin-mode)))
+  (add-to-list 'auto-mode-alist '("\\.kts\\'" . kotlin-mode))
+  (add-hook 'kotlin-mode-hook '(lambda ()
+                                 (local-set-key (kbd "C-c C-r") 'usrj/run-kotlin-script))))
 
 (defun usrj/php-setup ()
   (require 'php-mode)
@@ -348,7 +368,7 @@
   (interactive)
   (switch-to-buffer (get-buffer-create "*php scratch*"))
   (php-mode)
-  (local-set-key (kbd "<f6>") 'usrj/run-php-scratch))
+  (local-set-key (kbd "C-c C-r") 'usrj/run-php-scratch))
 
 (defun usrj/run-php-scratch (beg end)
   (interactive "r")
