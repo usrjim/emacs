@@ -23,7 +23,7 @@
   (defalias 'evil-insert-state 'evil-emacs-state)
   ;;(key-chord-mode 1)
   ;;(key-chord-define evil-emacs-state-map  "jk" 'evil-normal-state)
-  (define-key evil-emacs-state-map (kbd "M-n") 'evil-normal-state)
+  (define-key evil-emacs-state-map (kbd "M-[") 'evil-normal-state)
   (define-key evil-emacs-state-map (kbd "<escape>") 'evil-normal-state)
   (evil-set-initial-state 'magit-status-mode 'emacs)
   (evil-set-initial-state 'magit-log-edit-mode 'emacs)
@@ -352,6 +352,7 @@
   (add-to-list 'auto-mode-alist '("\\.kt\\'" . kotlin-mode))
   (add-to-list 'auto-mode-alist '("\\.kts\\'" . kotlin-mode))
   (add-hook 'kotlin-mode-hook '(lambda ()
+                                 (electric-indent-mode -1)
                                  (local-set-key (kbd "C-c C-r") 'usrj/run-kotlin-script))))
 
 (defun usrj/php-setup ()
