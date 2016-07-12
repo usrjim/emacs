@@ -494,14 +494,14 @@
   (split-window-vertically)
   (other-window 1 nil)
   ;;(ido-find-file)
-  (ido-switch-buffer))
+  (ido-switch-buffer-other-window))
 
 (defun usrj/split ()
   (interactive)
   (split-window-horizontally)
   (other-window 1 nil)
   ;;(ido-find-file)
-  (ido-switch-buffer))
+  (ido-switch-buffer-other-window))
 
 (defun cider-diet-jack-in ()
   (interactive)
