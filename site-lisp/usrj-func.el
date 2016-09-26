@@ -106,7 +106,9 @@
   (defalias 'redo 'undo-tree-redo)
   (global-set-key (kbd "C-z") 'undo)
   (global-set-key (kbd "C-S-z") 'redo)
-  
+  (global-set-key "\C-cy" '(lambda ()
+                             (interactive)
+                             (popup-menu 'yank-menu)))
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-\\") 'company-complete)
 
