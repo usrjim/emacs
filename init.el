@@ -27,6 +27,7 @@
                       web-mode
                       yasnippet
                       slime
+                      lua-mode
                       undo-tree
                       key-chord))
 
