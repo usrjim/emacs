@@ -10,7 +10,7 @@
 
 (defvar my-packages '(clojure-mode
                       company-go
-                      emacs-eclim
+                      ;;emacs-eclim
                       groovy-mode
                       ace-window
                       cider
@@ -69,11 +69,9 @@
 (setq cursor-type 'bar)
 (evil-mode 1)
 
-;;(require 'server)
-;;(unless (server-running-p)
-;;  (server-start)) 
-
-;; (load "sos")
+(require 'server)
+(unless (server-running-p)
+  (server-start)) 
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -83,8 +81,8 @@
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(custom-enabled-themes (quote (tango-dark)))
- '(eclim-eclipse-dirs (quote ("/opt/eclipse")))
- '(eclim-executable "/opt/eclipse/eclim")
+ ;;'(eclim-eclipse-dirs (quote ("/opt/eclipse")))
+ ;;'(eclim-executable "/opt/eclipse/eclim")
  '(evil-toggle-key "C-`")
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(show-paren-mode t)
@@ -96,3 +94,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
