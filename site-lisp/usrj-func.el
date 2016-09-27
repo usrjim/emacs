@@ -511,6 +511,10 @@
     (ido-switch-buffer-other-window)
     (ido-find-file)))
 
+(defun usrj/lock-scratch-buffer ()
+  (set-buffer "*scratch*")
+  (emacs-lock-mode))
+
 (defun cider-diet-jack-in ()
   (interactive)
   (let* ((cider-diet-process (start-process "cider-diet-nrepl" "*cider-diet-nrepl*"

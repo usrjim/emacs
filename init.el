@@ -70,6 +70,8 @@
 (setq cursor-type 'bar)
 (evil-mode 1)
 
+(add-hook 'after-init-hook 'usrj/lock-scratch-buffer t)
+
 (require 'server)
 (unless (server-running-p)
   (server-start)) 
