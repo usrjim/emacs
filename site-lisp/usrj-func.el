@@ -82,7 +82,7 @@
   ;; (electric-pair-mode 1)
   ;; (electric-indent-mode 1)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  (setq pop-up-windows -1)
+  (setq pop-up-windows nil) 
   (when (window-system)
     ;; (nyan-mode 1)
     ;;(set-frame-parameter (selected-frame) 'alpha '(95 65))
