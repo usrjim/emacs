@@ -82,6 +82,7 @@
   ;; (electric-pair-mode 1)
   ;; (electric-indent-mode 1)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (setq pop-up-windows -1)
   (when (window-system)
     ;; (nyan-mode 1)
     ;;(set-frame-parameter (selected-frame) 'alpha '(95 65))
@@ -109,6 +110,7 @@
   (global-set-key "\C-cy" '(lambda ()
                              (interactive)
                              (popup-menu 'yank-menu)))
+  (global-set-key (kbd "C-c t") 'toggle-window-dedicated)
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-\\") 'company-complete)
 
@@ -521,4 +523,15 @@
                                             "java" "-jar" cider-diet-path "7888")))
     (accept-process-output cider-diet-process)
     (cider-connect "localhost" 7888)))
+
+(defun toggle-window-dedicated ()
+  "Control whether or not Emacs is allowed to display another
+buffer in current window."
+  (interactive)
+  (message
+   (if (let (window (get-buffer-window (current-buffer)))
+         (set-window-dedicated-p window (not (window-dedicated-p window))))
+       "%s: Can't touch this!"
+     "%s is up for grabs.")
+   (current-buffer)))
 
