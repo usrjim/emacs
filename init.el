@@ -63,12 +63,18 @@
 (usrj/go-setup)
 (usrj/clojure-setup)
 (usrj/kotlin-setup)
+(usrj/lua-setup)
 ;;(usrj/java-setup)
 
 (setq default-directory "~/")
 (blink-cursor-mode -1)
 (setq cursor-type 'bar)
 (evil-mode 1)
+
+(setenv "GOROOT" "/opt/go")
+(setenv "GOPATH" "/opt/gohome")
+(add-to-list 'exec-path (concat (getenv "GOROOT") "/bin"))
+(add-to-list 'exec-path (concat (getenv "GOPATH") "/bin"))
 
 (add-hook 'after-init-hook 'usrj/lock-scratch-buffer t)
 

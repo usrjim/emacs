@@ -365,6 +365,19 @@
   (add-hook 'kotlin-mode-hook '(lambda ()
                                  (electric-indent-mode -1)
                                  (local-set-key (kbd "C-c C-r") 'usrj/run-kotlin-script))))
+(defun usrj/run-lua-script ()
+  (interactive)
+  (save-buffer)
+  (let ((f (buffer-file-name)))
+    (message (format "running %s" f))
+    (shell-command
+     (format "luajit %s" (shell-quote-argument f)))))
+
+(defun usrj/lua-setup()
+  (add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
+  (add-hook 'lua-mode-hook '(lambda ()
+                                 (electric-indent-mode -1)
+                                 (local-set-key (kbd "C-c C-r") 'usrj/run-lua-script))))
 
 (defun usrj/php-setup ()
   (require 'php-mode)
