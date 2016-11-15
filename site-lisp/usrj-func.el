@@ -352,6 +352,7 @@
   (add-to-list 'magic-mode-alist '(".* boot" . clojure-mode))
   (add-hook 'clojure-mode-hook '(lambda ()
                                   (paredit-mode) 
+                                  (rainbow-delimiters-mode)
                                   (local-set-key (kbd "C-c C-r") 'usrj/quick-eval-clojure))))
 
 (defun usrj/run-kotlin-script ()
