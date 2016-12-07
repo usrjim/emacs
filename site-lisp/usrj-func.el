@@ -17,6 +17,7 @@
   (global-undo-tree-mode)
   (global-evil-leader-mode)
   (evil-mode 1)
+  (which-key-mode 1)
   (setq evil-default-state 'normal)
   (setq evil-normal-state-cursor '(box "purple")
         evil-emacs-state-cursor '((bar . 2) "red"))

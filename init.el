@@ -29,6 +29,7 @@
                       slime
                       lua-mode
                       undo-tree
+                      which-key
                       key-chord))
 
 (dolist (p my-packages)
