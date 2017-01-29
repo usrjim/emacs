@@ -348,6 +348,10 @@
   (add-hook 'cider-repl-mode-hook #'paredit-mode)
   (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
   (setq cider-auto-select-error-buffer nil)
+  (setq cider-cljs-lein-repl
+        "(do (require 'figwheel-sidecar.repl-api)
+           (figwheel-sidecar.repl-api/start-figwheel!)
+           (figwheel-sidecar.repl-api/cljs-repl))")
   (add-to-list 'auto-mode-alist '("\\.cljs\\.hl\\'" . clojurescript-mode))
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
   (add-to-list 'magic-mode-alist '(".* boot" . clojure-mode))
