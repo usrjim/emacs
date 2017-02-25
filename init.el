@@ -28,6 +28,7 @@
                       yasnippet
                       slime
                       lua-mode
+                      alchemist
                       undo-tree
                       which-key
                       key-chord))
