@@ -193,8 +193,8 @@
     "]" 'abort-recursive-edit
     ">" 'git-gutter:next-hunk
     "<" 'git-gutter:previous-hunk
-    "-" 'usrj/vsplit
-    "|" 'usrj/split
+    "\"" 'split-window-below
+    "%" 'split-window-right
     "/" 'occur
     ))
 
@@ -236,8 +236,8 @@
   (define-key mj-map (kbd "]") 'abort-recursive-edit)
   (define-key mj-map (kbd ">") 'git-gutter:next-hunk)
   (define-key mj-map (kbd "<") 'git-gutter:previous-hunk)
-  (define-key mj-map (kbd "-") 'usrj/vsplit)
-  (define-key mj-map (kbd "|") 'usrj/split)
+  (define-key mj-map (kbd "\"") 'split-window-below)
+  (define-key mj-map (kbd "%") 'split-window-right)
   (define-key mj-map (kbd "/") 'occur)
   (define-key mj-map (kbd "\\") 'company-complete)
   (define-key mj-map (kbd "<down>") 'usrj/copy-line-down)
@@ -415,6 +415,11 @@
   (switch-to-buffer-other-window "*PHP*")
   (insert "\n\n")
   (switch-to-buffer-other-window "*php scratch*"))
+
+(defun usrj/ruby-setup ()
+  (add-hook 'ruby-mode-hook 'robe-mode)
+  (eval-after-load 'company
+  '(push 'company-robe company-backends)))
 
 (defun usrj/kill-dired-buffers ()
   (interactive)

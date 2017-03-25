@@ -18,6 +18,7 @@
                       evil-leader
                       expand-region
                       git-gutter-fringe
+                      robe
                       magit
                       projectile
                       paredit
@@ -62,6 +63,7 @@
 (usrj/keys)
 (usrj/tool-bar)
 (usrj/php-setup)
+(usrj/ruby-setup)
 (usrj/go-setup)
 (usrj/clojure-setup)
 (usrj/kotlin-setup)
