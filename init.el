@@ -9,6 +9,7 @@
   (package-refresh-contents))
 
 (defvar my-packages '(clojure-mode
+                      inf-clojure
                       company-go
                       ;;emacs-eclim
                       groovy-mode
@@ -48,6 +49,7 @@
 (setq cider-diet-path (expand-file-name (concat (getenv "HOME")
                                                 "/homebin/cider-diet-0.1.0-SNAPSHOT-standalone.jar")))
 (setq clojure-jar-path "/opt/clojure/clojure-1.8.0.jar")
+(setq inf-clojure-program "boot -C repl")
 
 (when install-infra-packges
   (dolist (p infra-packages)
