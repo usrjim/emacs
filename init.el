@@ -33,6 +33,7 @@
                       alchemist
                       undo-tree
                       which-key
+                      restclient
                       key-chord))
 
 (dolist (p my-packages)
