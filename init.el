@@ -15,8 +15,8 @@
                       groovy-mode
                       ace-window
                       cider
-                      evil
-                      evil-leader
+                      ;; evil
+                      ;; evil-leader
                       expand-region
                       git-gutter-fringe
                       robe
@@ -52,6 +52,27 @@
 (setq clojure-jar-path "/opt/clojure/clojure-1.8.0.jar")
 (setq inf-clojure-program "boot -C repl")
 
+;; (setq mac-option-key-is-meta nil
+;;       mac-command-key-is-meta t
+;;       mac-command-modifier 'meta
+;;       mac-option-modifier 'none)
+
+(require 'server)
+(unless (server-running-p)
+    (server-start))
+
+(defun eshell-mode-hook-func ()
+  (setq eshell-path-env (concat "/usr/local/bin:" eshell-path-env))
+  (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))) 
+(add-hook 'eshell-mode-hook 'eshell-mode-hook-func)
+
+(add-hook 'after-init-hook 'usrj/lock-scratch-buffer t)
+
+(when (window-system)
+  (set-frame-parameter (selected-frame) 'alpha '(95 65)))
+
+(setq default-frame-alist '((cursor-color . "red")))
+
 (when install-infra-packges
   (dolist (p infra-packages)
     (when (not (package-installed-p p))
@@ -76,7 +97,8 @@
 (setq default-directory "~/")
 (blink-cursor-mode -1)
 (setq cursor-type 'bar)
-(evil-mode 1)
+(set-cursor-color 'red)
+;; (evil-mode 1)
 
 (setenv "GOROOT" "/opt/go")
 (setenv "GOPATH" "/opt/gohome")
