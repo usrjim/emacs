@@ -16,6 +16,8 @@
 
 (defun usrj/env ()
   (global-undo-tree-mode)
+  (projectile-global-mode)
+  (hs-minor-mode)
   ;;(global-evil-leader-mode)
   ;;(evil-mode 1)
   (which-key-mode 1)
