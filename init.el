@@ -12,11 +12,15 @@
                       inf-clojure
                       company-go
                       ;;emacs-eclim
+                      nyan-mode
                       groovy-mode
                       ace-window
                       cider
                       ;; evil
                       ;; evil-leader
+                      writeroom-mode
+                      emamux
+                      eyebrowse
                       expand-region
                       git-gutter-fringe
                       robe
