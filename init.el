@@ -16,8 +16,6 @@
                       groovy-mode
                       ace-window
                       cider
-                      ;; evil
-                      ;; evil-leader
                       writeroom-mode
                       emamux
                       eyebrowse
@@ -37,8 +35,7 @@
                       alchemist
                       undo-tree
                       which-key
-                      restclient
-                      key-chord))
+                      restclient))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -50,7 +47,6 @@
 
 (setq install-infra-packges nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
-(setq key-chord-two-keys-delay 0.5)
 (setq cider-diet-path (expand-file-name (concat (getenv "HOME")
                                                 "/homebin/cider-diet-0.1.0-SNAPSHOT-standalone.jar")))
 (setq clojure-jar-path "/opt/clojure/clojure-1.8.0.jar")
@@ -102,7 +98,6 @@
 (blink-cursor-mode -1)
 (setq cursor-type 'bar)
 (set-cursor-color 'red)
-;; (evil-mode 1)
 
 (setenv "GOROOT" "/opt/go")
 (setenv "GOPATH" "/opt/gohome")
@@ -131,7 +126,6 @@
  '(custom-enabled-themes (quote (tango-dark)))
  ;;'(eclim-eclipse-dirs (quote ("/opt/eclipse")))
  ;;'(eclim-executable "/opt/eclipse/eclim")
- '(evil-toggle-key "C-`")
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(show-paren-mode t)
  '(tool-bar-style (quote image)))

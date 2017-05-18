@@ -4,9 +4,7 @@
   (require 'yasnippet)
   (require 'undo-tree)
   (require 'git-gutter-fringe)
-  ;;(require 'evil-leader)
   (require 'buffer-move)
-  ;;(require 'key-chord)
   (require 'emamux)
   (autoload 'scss-mode "scss-mode")
   (autoload 'emmet-mode "emmet-mode")
@@ -18,27 +16,8 @@
 (defun usrj/env ()
   (global-undo-tree-mode)
   (projectile-global-mode)
-  ;;(global-evil-leader-mode)
-  ;;(evil-mode 1)
   (which-key-mode 1)
   (eyebrowse-mode 1)
-  ;;(setq evil-default-state 'emacs)
-  ;; (setq evil-normal-state-cursor '(box "blue")
-  ;;       evil-emacs-state-cursor '((bar . 2) "red"))
-  ;;(defalias 'evil-insert-state 'evil-emacs-state)
-  ;;(key-chord-mode 1)
-  ;;(key-chord-define evil-emacs-state-map  "jk" 'evil-normal-state)
-  ;; (define-key evil-emacs-state-map (kbd "M-[") 'evil-normal-state)
-  ;; (define-key evil-emacs-state-map (kbd "M-]") 'evil-normal-state)
-  ;; (define-key evil-emacs-state-map (kbd "<escape>") 'evil-normal-state)
-  ;;(evil-set-initial-state 'magit-status-mode 'emacs)
-  ;;(evil-set-initial-state 'magit-log-edit-mode 'emacs)
-  ;;(evil-set-initial-state 'magit-popup-mode 'emacs)
-  ;;(evil-set-initial-state 'nav-mode 'emacs)
-  ;;(evil-set-initial-state 'grep-mode 'emacs)
-  ;;(evil-set-initial-state 'cider-error-mode 'emacs)
-  ;;(evil-set-initial-state 'cider-repl-mode 'emacs)
-  ;;(evil-set-initial-state 'eshell-mode 'emacs)
   (setq css-indent-offset 2)
   (setq ring-bell-function 'ignore)
   (global-git-gutter-mode t)
@@ -95,9 +74,7 @@
     (tool-bar-mode -1)
     (menu-bar-mode -1)
     (scroll-bar-mode -1))
-  (usrj/common-keys)
-  ;; (usrj/evil-keys)
-)
+  (usrj/common-keys))
 
 (defun usrj/translate-prefix-keys ()
   ;;; c-c <-> c-i
@@ -143,68 +120,6 @@
   (global-set-key (kbd "C-8") 'usrj/asterisk)
   (global-set-key (kbd "<f11>") 'magit-status)
   (global-set-key (kbd "C-<f7>") 'ecb-activate))
-
-(defun usrj/evil-keys ()
-  ;;; esc quits
-  (define-key evil-normal-state-map [escape] 'keyboard-quit)
-  (define-key evil-visual-state-map [escape] 'keyboard-quit)
-  (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-
-   ;;; emacs normal keys
-  (define-key evil-normal-state-map "\C-y" 'yank)
-  (define-key evil-insert-state-map "\C-y" 'yank)
-  (define-key evil-visual-state-map "\C-y" 'yank)
-  (define-key evil-insert-state-map "\C-e" 'end-of-line)
-  (define-key evil-normal-state-map "\C-w" 'evil-delete)
-  (define-key evil-insert-state-map "\C-w" 'evil-delete)
-  (define-key evil-insert-state-map "\C-r" 'search-backward)
-  (define-key evil-visual-state-map "\C-w" 'evil-delete)
-
-  ;;; evil leader keys
-  (evil-leader/set-leader "<SPC>")
-  (evil-leader/set-key
-    "0" 'delete-window
-    "1" 'delete-other-windows
-    "2" 'scroll-up
-    "3" 'scroll-down
-    "7" 'menu-bar-mode
-    "8" 'tool-bar-mode
-    "a" 'beginning-of-visual-line
-    "b" 'ido-switch-buffer
-    "c" 'usrj/copy-filename
-    "d" 'scroll-up
-    "e" 'eval-last-sexp
-    "f" 'ido-find-file
-    "g" 'magit-status
-    "h" 'back-to-indentation
-    "i" 'end-of-visual-line
-    "j" 'ace-jump-mode
-    "k" 'kill-this-buffer
-    "l" 'cider-load-buffer
-    "m" 'mc/mark-all-like-this
-    "n" 'cider-repl-set-ns
-    "o" 'other-window
-    "p" 'projectile-command-map
-    "q" 'top-level
-    "r" 'usrj/ido-recentf-open
-    "s" 'save-buffer
-    "u" 'scroll-down
-    "v" 'ido-find-alternate-file
-    "w" 'ace-window
-    "x" 'execute-extended-command
-    "y" 'occur
-    "z" 'cider-switch-to-repl-buffer
-    "]" 'abort-recursive-edit
-    ">" 'git-gutter:next-hunk
-    "<" 'git-gutter:previous-hunk
-    "\"" 'split-window-below
-    "%" 'split-window-right
-    "/" 'occur
-    ))
 
 (defun usrj/keys ()
   ;;; M-j group
