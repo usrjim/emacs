@@ -71,7 +71,7 @@
 (when (window-system)
   (set-frame-parameter (selected-frame) 'alpha '(95 65)))
 
-(setq default-frame-alist '((cursor-color . "red")))
+(setq default-frame-alist '((cursor-color . "blue")))
 
 (when install-infra-packges
   (dolist (p infra-packages)
@@ -97,7 +97,8 @@
 (setq default-directory "~/")
 (blink-cursor-mode -1)
 (setq cursor-type 'bar)
-(set-cursor-color 'red)
+(set-cursor-color 'blue)
+(setq-default mode-line-format nil)
 
 (setenv "GOROOT" "/opt/go")
 (setenv "GOPATH" "/opt/gohome")
