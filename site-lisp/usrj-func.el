@@ -124,7 +124,7 @@
 (defun usrj/keys ()
   ;;; M-j group
   (define-prefix-command 'mj-map)
-  (global-set-key (kbd "M-j") 'mj-map)
+  (global-set-key (kbd "C-,") 'mj-map)
   (define-key mj-map (kbd "1") 'eyebrowse-switch-to-window-config-1)
   (define-key mj-map (kbd "2") 'eyebrowse-switch-to-window-config-2)
   (define-key mj-map (kbd "3") 'eyebrowse-switch-to-window-config-3)
