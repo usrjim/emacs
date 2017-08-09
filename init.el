@@ -100,6 +100,9 @@
 (set-cursor-color 'blue)
 (setq-default mode-line-format nil)
 
+(global-font-lock-mode 0)
+(setq font-lock-global-modes nil)
+
 (setenv "GOROOT" "/opt/go")
 (setenv "GOPATH" "/opt/gohome")
 (add-to-list 'exec-path (concat (getenv "GOROOT") "/bin"))
