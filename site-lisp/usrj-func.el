@@ -1,7 +1,6 @@
 (defun usrj/depen ()
   (require 'ace-jump-mode)
   (require 'expand-region)
-  (require 'yasnippet)
   (require 'undo-tree)
   (require 'git-gutter-fringe)
   (require 'buffer-move)
@@ -25,20 +24,16 @@
   ;;                     :foreground "Black"
   ;;                     :background "DarkOrange"
   ;;                     :box nil)
-  (yas-reload-all)
   (setq cursor-type 'bar)
   (set-language-environment "utf-8")
   (setq erc-hide-list '("JOIN" "PART" "QUIT"))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.artist\\'" . artist-mode))
-  ;; (setq slime-net-coding-system 'utf-8-unix)
   (setq buffer-file-coding-system 'utf-8-unix)
   (add-hook 'web-mode-hook  'emmet-mode)
   (setq ecb-tip-of-the-day nil)
   (setq ecb-primary-secondary-mouse-buttons 'mouse-1--C-mouse-1)
-  ;; (slime-setup '(slime-fancy))
-  ;; (setq inferior-lisp-program "/usr/bin/sbcl")
   (delete-selection-mode 1)
   (setq make-backup-files nil)
   (setq auto-save-default nil)
@@ -207,66 +202,12 @@
   (tool-bar-add-item "~/.emacs.d/img/v-split" 'split-window-right 'usrj-tb-win-right)
   (tool-bar-add-item "~/.emacs.d/img/h-split" 'split-window-below 'usrj-tb-win-below)
   (tool-bar-add-item "~/.emacs.d/img/list" 'list-buffers 'usrj-tb-list-bfs)
-  (tool-bar-add-item "~/.emacs.d/img/git" 'magit-status 'usrj-tb-magit)
   (tool-bar-add-item "~/.emacs.d/img/projectile" 'projectile-mode 'usrj-tb-projectile)
   (tool-bar-add-item "~/.emacs.d/img/org_mode" 'org-mode 'usrj-tb-org-mode)
   (tool-bar-add-item "~/.emacs.d/img/linum" 'linum-mode 'usrj-tb-linum)
   (tool-bar-add-item "~/.emacs.d/img/tree" 'undo-tree-visualize 'usrj-tb-undo-tree)
   (tool-bar-add-item "~/.emacs.d/img/paredit" 'paredit-mode 'usrj-tb-paredit)
   (tool-bar-add-item "~/.emacs.d/img/cider" 'cider-jack-in 'usrj-tb-cider))
-
-(defun usrj/java-setup()
-  (require 'eclim)
-  (require 'company-emacs-eclim)
-  (company-emacs-eclim-setup)
-  (setq help-at-pt-display-when-idle t)
-  (setq help-at-pt-timer-delay 0.1)
-  (help-at-pt-set-timer)
-  (add-hook 'java-mode-hook '(lambda()
-                               (eclim-mode t)
-                               (yas-minor-mode)))
-  (add-hook 'eclim-mode-hook '(lambda ()
-                                (local-set-key (kbd "C-c C-r") 'eclim-run-class)
-                                (define-key-after global-map [menu-bar usrj-eclim]
-                                  (cons "usrj-eclim" (make-sparse-keymap "usrj-eclim")))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-project-goto]
-                                  '("Project Goto" . eclim-project-goto)) 
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-project-build]
-                                  '("Project Build" . eclim-project-build)) 
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-project-create]
-                                  '("Project Create" . eclim-project-create))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-problem-correct]
-                                  '("Problem Correct" . eclim-problems-correct)) 
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-hierarchy]
-                                  '("Show Hierarchy" . eclim-java-hierarchy))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-refactor-rename]
-                                  '("Refactor Rename" . eclim-java-refactor-rename-symbol-at-point))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-sp2] '("--"))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-find-type]
-                                  '("Find Type" . eclim-java-find-type))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-find-declaration]
-                                  '("Find Declaration" . eclim-java-find-declaration))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-find-references]
-                                  '("Find References" . eclim-java-find-references))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-show-documentation]
-                                  '("Show Documentation" . eclim-java-show-documentation-for-current-element))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-problems]
-                                  '("Show Problems" . eclim-problems-open))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-sp1] '("--"))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-import-organize]
-                                  '("Import Organize" . eclim-java-import-organize))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-format]
-                                  '("Format" . eclim-java-format))
-                                (define-key global-map [menu-bar usrj-eclim usrj-eclim-run-class]
-                                  '("Run Class" . eclim-run-class)))))
-
-(defun usrj/quick-eval-clojure ()
-  (interactive)
-  (save-buffer)
-  (let ((f (buffer-file-name)))
-    (message (format "evaluating %s" f))
-    (shell-command
-     (format "java -cp %s clojure.main %s" clojure-jar-path (shell-quote-argument f)))))
 
 (defun usrj/clojure-setup()
   (add-hook 'cider-mode-hook #'eldoc-mode)
@@ -283,23 +224,8 @@
   (add-hook 'clojure-mode-hook '(lambda ()
                                   (hs-minor-mode)
                                   (paredit-mode) 
-                                  (rainbow-delimiters-mode)
-                                  (local-set-key (kbd "C-c C-r") 'usrj/quick-eval-clojure))))
+                                  (rainbow-delimiters-mode))))
 
-(defun usrj/run-kotlin-script ()
-  (interactive)
-  (save-buffer)
-  (let ((f (buffer-file-name)))
-    (message (format "running %s" f))
-    (shell-command
-     (format "kotlinc -script %s" (shell-quote-argument f)))))
-
-(defun usrj/kotlin-setup()
-  (add-to-list 'auto-mode-alist '("\\.kt\\'" . kotlin-mode))
-  (add-to-list 'auto-mode-alist '("\\.kts\\'" . kotlin-mode))
-  (add-hook 'kotlin-mode-hook '(lambda ()
-                                 (electric-indent-mode -1)
-                                 (local-set-key (kbd "C-c C-r") 'usrj/run-kotlin-script))))
 (defun usrj/run-lua-script ()
   (interactive)
   (save-buffer)

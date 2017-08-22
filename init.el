@@ -11,9 +11,6 @@
 (defvar my-packages '(clojure-mode
                       inf-clojure
                       company-go
-                      ;;emacs-eclim
-                      nyan-mode
-                      groovy-mode
                       ace-window
                       cider
                       writeroom-mode
@@ -22,15 +19,12 @@
                       expand-region
                       git-gutter-fringe
                       robe
-                      magit
                       projectile
                       paredit
                       rainbow-delimiters
                       markdown-mode
                       multiple-cursors
                       web-mode
-                      yasnippet
-                      slime
                       lua-mode
                       alchemist
                       undo-tree
@@ -42,13 +36,11 @@
     (package-install p)))
 
 (defvar infra-packages '(puppet-mode
-                      nginx-mode
-                      vcl-mode))
+                         nginx-mode
+                         vcl-mode))
 
 (setq install-infra-packges nil)
-(setq magit-last-seen-setup-instructions "1.4.0")
-(setq cider-diet-path (expand-file-name (concat (getenv "HOME")
-                                                "/homebin/cider-diet-0.1.0-SNAPSHOT-standalone.jar")))
+
 (setq clojure-jar-path "/opt/clojure/clojure-1.8.0.jar")
 (setq inf-clojure-program "boot -C repl")
 
@@ -68,11 +60,6 @@
 
 (add-hook 'after-init-hook 'usrj/lock-scratch-buffer t)
 
-(when (window-system)
-  (set-frame-parameter (selected-frame) 'alpha '(95 65)))
-
-(setq default-frame-alist '((cursor-color . "blue")))
-
 (when install-infra-packges
   (dolist (p infra-packages)
     (when (not (package-installed-p p))
@@ -90,14 +77,10 @@
 (usrj/ruby-setup)
 (usrj/go-setup)
 (usrj/clojure-setup)
-(usrj/kotlin-setup)
 (usrj/lua-setup)
-;;(usrj/java-setup)
 
 (setq default-directory "~/")
 (blink-cursor-mode -1)
-(setq cursor-type 'bar)
-(set-cursor-color 'blue)
 (setq-default mode-line-format nil)
 
 (global-font-lock-mode 0)
@@ -127,9 +110,7 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(custom-enabled-themes (quote (tango-dark)))
- ;;'(eclim-eclipse-dirs (quote ("/opt/eclipse")))
- ;;'(eclim-executable "/opt/eclipse/eclim")
+ '(custom-enabled-themes (quote (manoj-dark)))
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(show-paren-mode t)
  '(tool-bar-style (quote image)))
