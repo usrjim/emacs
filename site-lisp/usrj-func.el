@@ -73,11 +73,12 @@
 
 (defun usrj/translate-prefix-keys ()
   ;;; c-c <-> c-i
-  (when (display-graphic-p)
-    (keyboard-translate ?\C-i ?\C-c)
-    (keyboard-translate ?\C-c ?\C-i)
-    (keyboard-translate ?\C-m ?\C-x)
-    (keyboard-translate ?\C-x ?\C-m)))
+  ;; (when (display-graphic-p)
+  ;;   (keyboard-translate ?\C-i ?\C-c)
+  ;;   (keyboard-translate ?\C-c ?\C-i)
+  ;;   (keyboard-translate ?\C-m ?\C-x)
+  ;;   (keyboard-translate ?\C-x ?\C-m))
+  )
 
 (defun usrj/common-keys ()
   (usrj/translate-prefix-keys)
@@ -97,6 +98,7 @@
   (global-set-key (kbd "C-x j") 'ace-jump-mode)
   (global-set-key (kbd "C-=") 'er/expand-region)
   (global-set-key (kbd "C-\\") 'company-complete)
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
 
   ;;; multiple cursors
   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
