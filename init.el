@@ -81,7 +81,7 @@
 
 (setq default-directory "~/")
 (blink-cursor-mode -1)
-(setq-default mode-line-format nil)
+;;(setq-default mode-line-format nil)
 
 (global-font-lock-mode 0)
 (setq font-lock-global-modes nil)
