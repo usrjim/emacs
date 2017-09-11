@@ -10,6 +10,8 @@
 
 (defvar my-packages '(clojure-mode
                       inf-clojure
+                      flycheck
+                      flycheck-clojure
                       company-go
                       ace-window
                       cider
@@ -51,7 +53,9 @@
 
 (require 'server)
 (unless (server-running-p)
-    (server-start))
+  (server-start))
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 (defun eshell-mode-hook-func ()
   (setq eshell-path-env (concat "/usr/local/bin:" eshell-path-env))
@@ -110,8 +114,7 @@
  ;; If there is more than one, they won't work right.
  '(blink-cursor-mode nil)
  '(column-number-mode t)
- '(custom-enabled-themes (quote (manoj-dark)))
- '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(custom-enabled-themes (quote (misterioso)))
  '(show-paren-mode t)
  '(tool-bar-style (quote image)))
 
@@ -121,4 +124,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
