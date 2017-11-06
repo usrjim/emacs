@@ -13,6 +13,8 @@
                       flycheck
                       flycheck-clojure
                       company-go
+                      company-jedi
+                      elpy
                       ace-window
                       cider
                       writeroom-mode
@@ -82,6 +84,7 @@
 (usrj/go-setup)
 (usrj/clojure-setup)
 (usrj/lua-setup)
+(usrj/python-setup)
 
 (setq default-directory "~/")
 (blink-cursor-mode -1)
@@ -94,6 +97,7 @@
 (setenv "GOPATH" "/opt/gohome")
 (add-to-list 'exec-path (concat (getenv "GOROOT") "/bin"))
 (add-to-list 'exec-path (concat (getenv "GOPATH") "/bin"))
+(add-to-list 'exec-path "/usr/local/bin")
 
 (add-hook 'after-init-hook 'usrj/lock-scratch-buffer t)
 

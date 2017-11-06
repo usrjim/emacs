@@ -242,6 +242,13 @@
                                  (electric-indent-mode -1)
                                  (local-set-key (kbd "C-c C-r") 'usrj/run-lua-script))))
 
+(defun usrj/python-setup()
+  (elpy-enable)
+  (add-hook 'python-mode-hook '(lambda ()
+                                 (jedi:setup)
+                                 (setq company-backends
+                                 '(company-jedi)))))
+
 (defun usrj/php-setup ()
   (require 'php-mode)
   (add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))
