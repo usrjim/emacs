@@ -244,10 +244,10 @@
 
 (defun usrj/python-setup()
   (elpy-enable)
+  (elpy-use-ipython)
   (add-hook 'python-mode-hook '(lambda ()
                                  (jedi:setup)
-                                 (setq company-backends
-                                 '(company-jedi)))))
+                                 (local-set-key (kbd "C-\\") 'company-jedi))))
 
 (defun usrj/php-setup ()
   (require 'php-mode)

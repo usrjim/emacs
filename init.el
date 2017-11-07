@@ -73,6 +73,12 @@
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 
+(setenv "GOROOT" "/opt/go")
+(setenv "GOPATH" "/opt/gohome")
+(add-to-list 'exec-path (concat (getenv "GOROOT") "/bin"))
+(add-to-list 'exec-path (concat (getenv "GOPATH") "/bin"))
+(add-to-list 'exec-path "/usr/local/bin")
+
 (load "usrj-func")
 (usrj/depen)
 (usrj/env)
@@ -92,12 +98,6 @@
 
 (global-font-lock-mode 0)
 (setq font-lock-global-modes nil)
-
-(setenv "GOROOT" "/opt/go")
-(setenv "GOPATH" "/opt/gohome")
-(add-to-list 'exec-path (concat (getenv "GOROOT") "/bin"))
-(add-to-list 'exec-path (concat (getenv "GOPATH") "/bin"))
-(add-to-list 'exec-path "/usr/local/bin")
 
 (add-hook 'after-init-hook 'usrj/lock-scratch-buffer t)
 
