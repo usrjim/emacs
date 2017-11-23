@@ -15,6 +15,7 @@
 (defun usrj/env ()
   (global-undo-tree-mode)
   (projectile-global-mode)
+  (dumb-jump-mode 1)
   (which-key-mode 1)
   (eyebrowse-mode 1)
   (setq css-indent-offset 2)

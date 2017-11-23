@@ -15,6 +15,7 @@
                       company-go
                       company-jedi
                       elpy
+                      dumb-jump
                       ace-window
                       cider
                       writeroom-mode
