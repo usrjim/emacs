@@ -13,6 +13,7 @@
   (autoload 'ecb-autoloads "ecb-autoloads"))
 
 (defun usrj/env ()
+  (add-hook 'prog-mode-hook #'hs-minor-mode)
   (global-undo-tree-mode)
   (projectile-global-mode)
   (dumb-jump-mode 1)
@@ -136,7 +137,7 @@
   ;;(define-key mj-map (kbd "e") ')
   (define-key mj-map (kbd "f") 'ido-find-file)
   ;;(define-key mj-map (kbd "g") ')
-  ;;(define-key mj-map (kbd "h") ')
+  (define-key mj-map (kbd "h") 'hs-toggle-hiding)
   ;;(define-key mj-map (kbd "i") ')
   (define-key mj-map (kbd "j") 'ace-jump-mode)
   (define-key mj-map (kbd "k") 'kill-this-buffer)
@@ -227,7 +228,6 @@
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
   (add-to-list 'magic-mode-alist '(".* boot" . clojure-mode))
   (add-hook 'clojure-mode-hook '(lambda ()
-                                  (hs-minor-mode)
                                   (paredit-mode) 
                                   (rainbow-delimiters-mode))))
 
