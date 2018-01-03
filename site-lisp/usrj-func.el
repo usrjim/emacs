@@ -124,7 +124,7 @@
   ;;; M-j group
   (define-prefix-command 'mj-map)
   (global-set-key (kbd "C-,") 'mj-map)
-  ;;(define-key mj-map (kbd "1") ')
+  (define-key mj-map (kbd "1") 'delete-other-windows)
   ;;(define-key mj-map (kbd "2") ')
   ;;(define-key mj-map (kbd "3") ')
   (define-key mj-map (kbd "7") 'menu-bar-mode)
