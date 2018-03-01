@@ -111,6 +111,8 @@
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
   ;;; misc
+  (global-set-key (kbd "C-<tab>") 'other-window)
+  (global-set-key (kbd "C-S-<tab>") '(lambda () (interactive) (other-window -1)))
   (global-set-key (kbd "<f5>") 'execute-extended-command)
   (global-set-key (kbd "M-<up>") 'usrj/move-line-up)
   (global-set-key (kbd "M-<down>") 'usrj/move-line-down)
@@ -136,7 +138,7 @@
   ;;(define-key mj-map (kbd "d") ')
   ;;(define-key mj-map (kbd "e") ')
   (define-key mj-map (kbd "f") 'ido-find-file)
-  ;;(define-key mj-map (kbd "g") ')
+  (define-key mj-map (kbd "g") 'magit-status)
   (define-key mj-map (kbd "h") 'hs-toggle-hiding)
   ;;(define-key mj-map (kbd "i") ')
   (define-key mj-map (kbd "j") 'ace-jump-mode)

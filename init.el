@@ -15,6 +15,7 @@
                       company-go
                       company-jedi
                       elpy
+                      magit
                       dumb-jump
                       ace-window
                       cider
