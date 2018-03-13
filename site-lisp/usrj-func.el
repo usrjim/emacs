@@ -230,7 +230,10 @@
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
   (add-to-list 'magic-mode-alist '(".* boot" . clojure-mode))
   (add-hook 'clojure-mode-hook '(lambda ()
-                                  (paredit-mode) 
+                                  (clj-refactor-mode 1)
+                                  (yas-minor-mode 1)
+                                  (cljr-add-keybindings-with-prefix "C-c C-m")
+                                  (paredit-mode)
                                   (rainbow-delimiters-mode))))
 
 (defun usrj/run-lua-script ()

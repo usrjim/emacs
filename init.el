@@ -9,6 +9,7 @@
   (package-refresh-contents))
 
 (defvar my-packages '(clojure-mode
+                      clj-refactor
                       inf-clojure
                       flycheck
                       flycheck-clojure
