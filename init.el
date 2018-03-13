@@ -99,8 +99,8 @@
 (blink-cursor-mode -1)
 ;;(setq-default mode-line-format nil)
 
-(global-font-lock-mode 0)
-(setq font-lock-global-modes nil)
+;;(global-font-lock-mode 0)
+;;(setq font-lock-global-modes nil)
 
 (add-hook 'after-init-hook 'usrj/lock-scratch-buffer t)
 
