@@ -10,6 +10,7 @@
 
 (defvar my-packages '(clojure-mode
                       clj-refactor
+                      drag-stuff
                       inf-clojure
                       flycheck
                       flycheck-clojure
