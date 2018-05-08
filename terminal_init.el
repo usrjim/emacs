@@ -20,7 +20,7 @@
 
 (global-visual-line-mode t)
 (show-paren-mode 1)
-(transient-mark-mode t)
+;; (transient-mark-mode t)
 
 ;; local package
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
@@ -36,6 +36,7 @@
 (drag-stuff-define-keys)
 
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(setq flycheck-highlighting-mode 'lines)
 
 (global-set-key (kbd "C-c =") 'er/expand-region)
 (global-set-key (kbd "C-c C-n") 'mc/mark-next-like-this)
@@ -57,3 +58,4 @@
 (global-set-key (kbd "C-c w") 'ace-window)
 
 (global-company-mode)
+(global-flycheck-mode)
