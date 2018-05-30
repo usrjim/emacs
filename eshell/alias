@@ -1,6 +1,5 @@
-alias ff 'find-file $1'
-alias fr 'find-file-other-window $1'
-alias l1 'ls -1 $*'
-alias g 'git $*'
-alias dd 'dired $1'
-
+alias dd dired $1
+alias ff find-file $1
+alias fr find-file-other-window $1
+alias g git $*
+alias l1 ls -1 $1
