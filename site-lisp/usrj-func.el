@@ -13,6 +13,7 @@
   (autoload 'ecb-autoloads "ecb-autoloads"))
 
 (defun usrj/env ()
+  (package-initialize)
   (add-hook 'prog-mode-hook #'hs-minor-mode)
   (global-undo-tree-mode)
   (projectile-global-mode)
@@ -113,6 +114,7 @@
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
   ;;; misc
+  ;; (global-set-key (kbd "<f12>") 'usrj/visit-ansi-term)
   (global-set-key (kbd "C-<tab>") 'other-window)
   (global-set-key (kbd "C-S-<tab>") '(lambda () (interactive) (other-window -1)))
   (global-set-key (kbd "<f5>") 'execute-extended-command)
@@ -145,7 +147,7 @@
   ;;(define-key mj-map (kbd "i") ')
   (define-key mj-map (kbd "j") 'ace-jump-mode)
   (define-key mj-map (kbd "k") 'kill-buffer-and-window)
-  ;;(define-key mj-map (kbd "l") ')
+  (define-key mj-map (kbd "l") 'usrj/toggle-window-dedicated)
   (define-key mj-map (kbd "m") 'mc/mark-all-like-this)
   ;;(define-key mj-map (kbd "n") ')
   (define-key mj-map (kbd "o") 'other-window)
@@ -435,7 +437,7 @@
       (delete-other-windows))))
 
 (require 'term)
-(defun visit-ansi-term ()
+(defun usrj/visit-ansi-term ()
   "If the current buffer is:
      1) a running ansi-term named *ansi-term*, rename it.
      2) a stopped ansi-term, kill it and create a new one.
@@ -461,5 +463,14 @@
             (kill-buffer "*ansi-term*")
             (ansi-term term-cmd))
         (ansi-term term-cmd)))))
-;; changed F12 to eshell
-;; (global-set-key (kbd "<f12>") 'visit-ansi-term)
+
+
+(defun usrj/toggle-window-dedicated ()
+  (interactive)
+  (message
+   (if (let (window (get-buffer-window (current-buffer)))
+         (set-window-dedicated-p window (not (window-dedicated-p window))))
+       "%s: Can't touch this!"
+     "%s is up for grabs.")
+   (current-buffer)))
+

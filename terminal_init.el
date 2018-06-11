@@ -28,7 +28,7 @@
 ;; (load "ace-jump-mode")
 
 ;; elpa
-;; (package-initialize)
+(package-initialize)
 
 ;; (global-git-gutter-mode t)
 ;; (which-key-mode 1)
