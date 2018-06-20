@@ -141,7 +141,7 @@
   ;;(define-key mj-map (kbd "c") ')
   (define-key mj-map (kbd "d") 'git-gutter:popup-hunk)
   ;;(define-key mj-map (kbd "e") ')
-  (define-key mj-map (kbd "f") 'ido-find-file-other-window)
+  (define-key mj-map (kbd "f") 'ido-find-file)
   (define-key mj-map (kbd "g") 'magit-status)
   (define-key mj-map (kbd "h") 'hs-toggle-hiding)
   ;;(define-key mj-map (kbd "i") ')
