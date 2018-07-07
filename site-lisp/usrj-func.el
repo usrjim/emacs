@@ -13,6 +13,7 @@
   (autoload 'ecb-autoloads "ecb-autoloads"))
 
 (defun usrj/env ()
+  (package-initialize)
   (add-hook 'prog-mode-hook #'hs-minor-mode)
   (global-undo-tree-mode)
   (projectile-global-mode)
@@ -67,6 +68,7 @@
   (electric-indent-mode -1)
   (winner-mode 1)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (setq treemacs-no-png-images t)
   (when (window-system)
     ;; (nyan-mode 1)
     ;;(set-frame-parameter (selected-frame) 'alpha '(95 65))
@@ -113,6 +115,7 @@
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
   ;;; misc
+  ;; (global-set-key (kbd "<f12>") 'usrj/visit-ansi-term)
   (global-set-key (kbd "C-<tab>") 'other-window)
   (global-set-key (kbd "C-S-<tab>") '(lambda () (interactive) (other-window -1)))
   (global-set-key (kbd "<f5>") 'execute-extended-command)
@@ -120,6 +123,7 @@
   (global-set-key (kbd "M-<down>") 'usrj/move-line-down)
   (global-set-key (kbd "M-RET") 'usrj/new-line)
   (global-set-key (kbd "<f7>") 'usrj/list-func)
+  (global-set-key (kbd "<f8>") 'treemacs)
   (global-set-key (kbd "C-8") 'usrj/asterisk)
   (global-set-key (kbd "<f11>") 'magit-status)
   (global-set-key (kbd "C-<f7>") 'ecb-activate))
@@ -139,13 +143,13 @@
   ;;(define-key mj-map (kbd "c") ')
   (define-key mj-map (kbd "d") 'git-gutter:popup-hunk)
   ;;(define-key mj-map (kbd "e") ')
-  (define-key mj-map (kbd "f") 'ido-find-file-other-window)
+  (define-key mj-map (kbd "f") 'ido-find-file)
   (define-key mj-map (kbd "g") 'magit-status)
   (define-key mj-map (kbd "h") 'hs-toggle-hiding)
   ;;(define-key mj-map (kbd "i") ')
   (define-key mj-map (kbd "j") 'ace-jump-mode)
   (define-key mj-map (kbd "k") 'kill-buffer-and-window)
-  ;;(define-key mj-map (kbd "l") ')
+  (define-key mj-map (kbd "l") 'usrj/toggle-window-dedicated)
   (define-key mj-map (kbd "m") 'mc/mark-all-like-this)
   ;;(define-key mj-map (kbd "n") ')
   (define-key mj-map (kbd "o") 'other-window)
@@ -435,7 +439,7 @@
       (delete-other-windows))))
 
 (require 'term)
-(defun visit-ansi-term ()
+(defun usrj/visit-ansi-term ()
   "If the current buffer is:
      1) a running ansi-term named *ansi-term*, rename it.
      2) a stopped ansi-term, kill it and create a new one.
@@ -461,5 +465,14 @@
             (kill-buffer "*ansi-term*")
             (ansi-term term-cmd))
         (ansi-term term-cmd)))))
-;; changed F12 to eshell
-;; (global-set-key (kbd "<f12>") 'visit-ansi-term)
+
+
+(defun usrj/toggle-window-dedicated ()
+  (interactive)
+  (message
+   (if (let (window (get-buffer-window (current-buffer)))
+         (set-window-dedicated-p window (not (window-dedicated-p window))))
+       "%s: Can't touch this!"
+     "%s is up for grabs.")
+   (current-buffer)))
+

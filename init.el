@@ -22,6 +22,7 @@
                       ace-window
                       cider
                       writeroom-mode
+                      treemacs
                       emamux
                       eyebrowse
                       expand-region
