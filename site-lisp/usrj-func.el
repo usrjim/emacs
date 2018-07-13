@@ -122,6 +122,7 @@
   (global-set-key (kbd "M-<up>") 'usrj/move-line-up)
   (global-set-key (kbd "M-<down>") 'usrj/move-line-down)
   (global-set-key (kbd "M-RET") 'usrj/new-line)
+  (global-set-key (kbd "M-0") 'treemacs-select-window)
   (global-set-key (kbd "<f7>") 'usrj/list-func)
   (global-set-key (kbd "<f8>") 'treemacs)
   (global-set-key (kbd "C-8") 'usrj/asterisk)
