@@ -23,6 +23,9 @@
                       cider
                       writeroom-mode
                       treemacs
+                      ivy
+                      swiper
+                      counsel
                       emamux
                       eyebrowse
                       expand-region
