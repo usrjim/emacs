@@ -20,6 +20,7 @@
   (dumb-jump-mode 1)
   (which-key-mode 1)
   (ivy-mode 1)
+  (setq counsel-find-file-at-point t)
   (drag-stuff-global-mode t)
   (drag-stuff-define-keys)
   ;; (eyebrowse-mode 1)
