@@ -88,6 +88,7 @@
 (add-to-list 'exec-path "/usr/local/bin")
 
 (load "usrj-func")
+(load "usrj-eshell")
 (usrj/depen)
 (usrj/env)
 (usrj/menu)
