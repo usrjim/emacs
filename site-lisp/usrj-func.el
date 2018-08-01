@@ -123,6 +123,7 @@
   (global-set-key (kbd "M-<up>") 'usrj/move-line-up)
   (global-set-key (kbd "M-<down>") 'usrj/move-line-down)
   (global-set-key (kbd "M-RET") 'usrj/new-line)
+  (global-set-key (kbd "M-SPC") 'counsel-M-x)
   (global-set-key (kbd "M-0") 'treemacs-select-window)
   (global-set-key (kbd "<f7>") 'usrj/list-func)
   (global-set-key (kbd "<f8>") 'treemacs)
@@ -265,7 +266,8 @@
 
 (defun usrj/python-setup()
   (elpy-enable)
-  ;; (elpy-use-ipython)
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter-args "-i --simple-prompt")
   ;; (add-hook 'python-mode-hook '(lambda ()
   ;;                                (jedi:setup)
   ;;                                (local-set-key (kbd "C-\\") 'company-jedi)))
