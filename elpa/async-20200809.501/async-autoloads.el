@@ -1,12 +1,9 @@
 ;;; async-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
-(add-to-list 'load-path (directory-file-name
-                         (or (file-name-directory #$) (car load-path))))
-
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "async" "async.el" (0 0 0 0))
+;;;### (autoloads nil "async" "async.el" (24562 46473 503689 864000))
 ;;; Generated autoloads from async.el
 
 (autoload 'async-start-process "async" "\
@@ -69,12 +66,10 @@ returns nil.  It can still be useful, however, as an argument to
 
 \(fn START-FUNC &optional FINISH-FUNC)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "async" '("async-")))
-
 ;;;***
 
-;;;### (autoloads nil "async-bytecomp" "async-bytecomp.el" (0 0 0
-;;;;;;  0))
+;;;### (autoloads nil "async-bytecomp" "async-bytecomp.el" (24562
+;;;;;;  46473 487689 943000))
 ;;; Generated autoloads from async-bytecomp.el
 
 (autoload 'async-byte-recompile-directory "async-bytecomp" "\
@@ -107,11 +102,10 @@ Same as `byte-compile-file' but asynchronous.
 
 \(fn FILE)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "async-bytecomp" '("async-byte")))
-
 ;;;***
 
-;;;### (autoloads nil "dired-async" "dired-async.el" (0 0 0 0))
+;;;### (autoloads nil "dired-async" "dired-async.el" (24562 46473
+;;;;;;  481689 973000))
 ;;; Generated autoloads from dired-async.el
 
 (defvar dired-async-mode nil "\
@@ -149,19 +143,10 @@ Run ‘dired-do-rename’ asynchronously.
 
 \(fn &optional ARG)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "dired-async" '("dired-async-")))
-
 ;;;***
 
-;;;### (autoloads nil "smtpmail-async" "smtpmail-async.el" (0 0 0
-;;;;;;  0))
-;;; Generated autoloads from smtpmail-async.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "smtpmail-async" '("async-smtpmail-")))
-
-;;;***
-
-;;;### (autoloads nil nil ("async-pkg.el") (0 0 0 0))
+;;;### (autoloads nil nil ("async-pkg.el" "smtpmail-async.el") (24562
+;;;;;;  46473 498689 888000))
 
 ;;;***
 
@@ -169,6 +154,5 @@ Run ‘dired-do-rename’ asynchronously.
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; async-autoloads.el ends here

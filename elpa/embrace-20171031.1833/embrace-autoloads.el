@@ -1,12 +1,10 @@
 ;;; embrace-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
-(add-to-list 'load-path (directory-file-name
-                         (or (file-name-directory #$) (car load-path))))
-
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "embrace" "embrace.el" (0 0 0 0))
+;;;### (autoloads nil "embrace" "embrace.el" (24562 46193 596172
+;;;;;;  411000))
 ;;; Generated autoloads from embrace.el
 
 (autoload 'embrace-delete "embrace" "\
@@ -49,14 +47,11 @@
 
 \(fn)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "embrace" '("embrace-")))
-
 ;;;***
 
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; embrace-autoloads.el ends here
