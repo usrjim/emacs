@@ -3,3 +3,4 @@ transient
 projectile-bookmarks.eld
 auto-save-list
 custom.el
+elpa/archives/*
