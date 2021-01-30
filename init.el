@@ -1,9 +1,22 @@
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 ;; basic
 (set-language-environment "utf-8")
+(add-to-list 'exec-path "/usr/local/bin")
+
+(setq inhibit-startup-message t)
+(setq counsel-find-file-at-point t)
+(setq cursor-type 'bar)
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq inferior-lisp-program "sbcl")
+(setq show-paren-delay 0)
 
 (projectile-global-mode)
 (ivy-mode 1)
@@ -15,12 +28,7 @@
 (tool-bar-mode -1)
 (delete-selection-mode 1)
 (scroll-bar-mode -1)
-
-(setq inhibit-startup-message t)
-(setq counsel-find-file-at-point t)
-(setq cursor-type 'bar)
-(setq make-backup-files nil)
-(setq auto-save-default nil)
+(show-paren-mode)
 
 ;; keys
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -40,6 +48,10 @@
 ;; hooks
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+(add-hook 'lisp-mode-hook 'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+(add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
 
 ;; custom functions
 (defun usrj/md-link(url)
@@ -56,7 +68,3 @@
 (defun usrj/blog-date()
   (interactive)
   (insert (format-time-string "%A, %B %d, %Y")))
-
-;; custom variables
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
