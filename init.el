@@ -6,6 +6,9 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+;; fix projectile
+(require 'subr-x)
+
 ;; basic
 (set-language-environment "utf-8")
 (add-to-list 'exec-path "/usr/local/bin")
@@ -44,6 +47,9 @@
 (define-key usrj-map (kbd "e") 'cider-eval-last-sexp)
 (define-key usrj-map (kbd "m") 'cider-eval-defun-to-comment)
 (define-key usrj-map (kbd "r") 'counsel-recentf)
+
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;; hooks
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
