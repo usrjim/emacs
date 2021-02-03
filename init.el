@@ -59,6 +59,16 @@
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
 (add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
 
+;; org mode
+(setq org-confirm-babel-evaluate nil)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (clojure . t)
+   (python . t)
+   (shell . t)
+   (plantuml . t)))
+
 ;; custom functions
 (defun usrj/md-link(url)
   (interactive (list(read-string "url: ")))
