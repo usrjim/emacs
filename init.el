@@ -42,7 +42,7 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (define-prefix-command 'usrj-map)
-(global-set-key (kbd "C-,") 'usrj-map)
+(global-set-key (kbd "M-,") 'usrj-map)
 (define-key usrj-map (kbd "a") 'embrace-commander)
 (define-key usrj-map (kbd "e") 'cider-eval-last-sexp)
 (define-key usrj-map (kbd "m") 'cider-eval-defun-to-comment)
@@ -62,6 +62,8 @@
 ;; org mode
 (setq org-confirm-babel-evaluate nil)
 (setq org-babel-clojure-backend 'cider)
+(setq org-startup-folded nil)
+(add-hook 'org-mode-hook 'org-indent-mode)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
