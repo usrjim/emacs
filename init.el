@@ -61,6 +61,7 @@
 
 ;; org mode
 (setq org-confirm-babel-evaluate nil)
+(setq org-babel-clojure-backend 'cider)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
@@ -68,6 +69,15 @@
    (python . t)
    (shell . t)
    (plantuml . t)))
+
+(defun org-babel-tangle-block()
+  (interactive)
+  (let ((current-prefix-arg '(4)))
+    (call-interactively 'org-babel-tangle)))
+
+(eval-after-load "org"
+  '(progn
+     (define-key org-mode-map (kbd "C-c t") 'org-babel-tangle-block)))
 
 ;; custom functions
 (defun usrj/md-link(url)
