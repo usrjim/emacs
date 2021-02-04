@@ -62,8 +62,10 @@
 ;; org mode
 (setq org-confirm-babel-evaluate nil)
 (setq org-babel-clojure-backend 'cider)
+(setq org-babel-python-command "python3")
 (setq org-startup-folded nil)
 (add-hook 'org-mode-hook 'org-indent-mode)
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
