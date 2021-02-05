@@ -81,7 +81,8 @@
 
 (eval-after-load "org"
   '(progn
-     (define-key org-mode-map (kbd "C-c t") 'org-babel-tangle-block)))
+     (define-key org-mode-map (kbd "C-c t") 'org-babel-tangle-block)
+     (define-key org-mode-map [(control tab)] nil)))
 
 ;; custom functions
 (defun usrj/md-link(url)
