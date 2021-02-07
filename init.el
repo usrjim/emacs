@@ -65,6 +65,8 @@
 (setq org-babel-clojure-backend 'cider)
 (setq org-babel-python-command "python3")
 (setq org-startup-folded nil)
+(setq org-babel-js-function-wrapper
+      "console.log(require('util').inspect(function(){\n%s\n}(), { depth: 100 }))")
 (add-hook 'org-mode-hook 'org-indent-mode)
 
 (org-babel-do-load-languages
@@ -82,7 +84,8 @@
 
 (eval-after-load "org"
   '(progn
-     (define-key org-mode-map (kbd "C-c t") 'org-babel-tangle-block)))
+     (define-key org-mode-map (kbd "C-c t") 'org-babel-tangle-block)
+     (define-key org-mode-map [(control tab)] nil)))
 
 ;; custom functions
 (defun usrj/md-link(url)
