@@ -69,7 +69,8 @@
 (setq org-startup-folded nil)
 (add-hook 'org-mode-hook (lambda ()
 			   (org-indent-mode t)
-			   (org-bullets-mode t)))
+			   (org-bullets-mode t)
+			   (load-theme 'org-beautify)))
 (setq org-babel-js-function-wrapper
       "console.log(require('util').inspect(function(){\n%s\n}(), { depth: 100 }))")
  
