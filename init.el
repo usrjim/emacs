@@ -22,6 +22,7 @@
 (setq auto-save-default nil)
 (setq inferior-lisp-program "sbcl")
 (setq show-paren-delay 0)
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 
 (projectile-global-mode)
 (ivy-mode 1)
@@ -42,6 +43,12 @@
 (global-set-key (kbd "C-c C->") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-c 8") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-c w") 'ace-window)
+(global-set-key (kbd "C-c j") 'ace-jump-mode)
+(global-set-key (kbd "C-<tab>") 'other-window)
+(global-set-key (kbd "C-S-<tab>") '(lambda () (interactive) (other-window -1)))
+(global-set-key (kbd "C-c C-z") 'usrj/toggle-maximize-buffer)
+(global-set-key (kbd "C-c r") 'counsel-recentf)
 
 (define-prefix-command 'usrj-map)
 (global-set-key (kbd "M-,") 'usrj-map)
@@ -56,25 +63,26 @@
 ;; hooks
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
-(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
 
 ;; org mode
 (setq org-confirm-babel-evaluate nil)
 (setq org-babel-clojure-backend 'cider)
 (setq org-babel-python-command "python3")
 (setq org-startup-folded nil)
+(add-hook 'org-mode-hook (lambda ()
+			   (org-indent-mode t)
+			   (org-bullets-mode t)
+			   (load-theme 'org-beautify)))
 (setq org-babel-js-function-wrapper
       "console.log(require('util').inspect(function(){\n%s\n}(), { depth: 100 }))")
-(add-hook 'org-mode-hook 'org-indent-mode)
-
+ 
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
    (clojure . t)
    (python . t)
    (sh . t)
+   (js . t)
    (plantuml . t)))
 
 (defun org-babel-tangle-block()
@@ -102,3 +110,11 @@
 (defun usrj/blog-date()
   (interactive)
   (insert (format-time-string "%A, %B %d, %Y")))
+
+(defun usrj/toggle-maximize-buffer ()
+  (interactive)
+  (if (= 1 (length (window-list)))
+      (jump-to-register '_) 
+    (progn
+      (window-configuration-to-register '_)
+      (delete-other-windows))))
