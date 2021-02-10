@@ -21,13 +21,20 @@
 (setq inferior-lisp-program "sbcl")
 (setq show-paren-delay 0)
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(setq counsel-find-file-at-point t)
+(setq counsel-find-file-ignore-regexp
+      (concat
+       ;; file names beginning with # or .
+       "\\(?:\\`[#.]\\)"
+       ;; file names ending with # or ~
+       "\\|\\(?:[#~]\\'\\)"))
 
 (projectile-global-mode)
 (ivy-mode 1)
 (recentf-mode 1)
 (winner-mode 1)
-(line-number-mode "on")
-(column-number-mode "on")
+(line-number-mode t)
+(column-number-mode t)
 (electric-indent-mode -1)
 (tool-bar-mode -1)
 (delete-selection-mode 1)
@@ -47,6 +54,12 @@
 (global-set-key (kbd "C-S-<tab>") '(lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "C-c C-z") 'usrj/toggle-maximize-buffer)
 (global-set-key (kbd "C-c r") 'counsel-recentf)
+(global-set-key (kbd "C-c a") 'embrace-commander)
+(global-set-key (kbd "M-<up>") 'usrj/move-line-up)
+(global-set-key (kbd "M-<down>") 'usrj/move-line-down)
+(global-set-key (kbd "M-S-<up>") 'usrj/copy-line-up)
+(global-set-key (kbd "M-S-<down>") 'usrj/copy-line-down)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
 (define-prefix-command 'usrj-map)
 (global-set-key (kbd "M-,") 'usrj-map)
@@ -54,6 +67,8 @@
 (define-key usrj-map (kbd "e") 'cider-eval-last-sexp)
 (define-key usrj-map (kbd "m") 'cider-eval-defun-to-comment)
 (define-key usrj-map (kbd "r") 'counsel-recentf)
+(define-key usrj-map (kbd "<") 'winner-undo)
+(define-key usrj-map (kbd ">") 'winner-redo)
 
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -66,7 +81,7 @@
 (setq org-confirm-babel-evaluate nil)
 (setq org-babel-clojure-backend 'cider)
 (setq org-babel-python-command "python3")
-(setq org-startup-folded nil)
+;; (setq org-startup-folded nil)
 (add-hook 'org-mode-hook (lambda ()
 			   (org-indent-mode t)
 			   (org-bullets-mode t)
@@ -116,3 +131,43 @@
     (progn
       (window-configuration-to-register '_)
       (delete-other-windows))))
+
+(defun usrj/copy-line-up()
+  (interactive)
+  (let (line)
+    (setq line (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+    (forward-line -1)
+    (move-end-of-line nil)
+    (newline)
+    (insert line)))
+
+(defun usrj/copy-line-down()
+  (interactive)
+  (let (line)
+    (setq line (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+    (move-end-of-line nil)
+    (newline)
+    (insert line)))
+
+(defun usrj/move-line (n)
+  "Move the current line up or down by N lines."
+  (interactive "p")
+  (setq col (current-column))
+  (beginning-of-line) (setq start (point))
+  (end-of-line) (forward-char) (setq end (point))
+  (let ((line-text (delete-and-extract-region start end)))
+    (forward-line n)
+    (insert line-text)
+    ;; restore point to original column in moved line
+    (forward-line -1)
+    (forward-char col)))
+
+(defun usrj/move-line-up (n)
+  "Move the current line up by N lines."
+  (interactive "p")
+  (usrj/move-line (if (null n) -1 (- n))))
+
+(defun usrj/move-line-down (n)
+  "Move the current line down by N lines."
+  (interactive "p")
+  (usrj/move-line (if (null n) 1 n)))
