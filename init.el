@@ -60,6 +60,7 @@
 (global-set-key (kbd "M-S-<up>") 'usrj/copy-line-up)
 (global-set-key (kbd "M-S-<down>") 'usrj/copy-line-down)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "s-b") 'counsel-switch-buffer-other-window)
 
 (define-prefix-command 'usrj-map)
 (global-set-key (kbd "M-,") 'usrj-map)
@@ -70,8 +71,13 @@
 (define-key usrj-map (kbd "<") 'winner-undo)
 (define-key usrj-map (kbd ">") 'winner-redo)
 
+;; projectile
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+;; wrap-region
+(wrap-region-global-mode t)
+(wrap-region-add-wrapper "#+BEGIN_EXAMPLE\n" "\n#+END_EXAMPLE" "#" 'org-mode)
 
 ;; hooks
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
