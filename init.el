@@ -61,6 +61,7 @@
 (global-set-key (kbd "M-S-<down>") 'usrj/copy-line-down)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "s-b") 'counsel-switch-buffer-other-window)
+(global-set-key (kbd "s-=") 'zoom)
 
 (define-prefix-command 'usrj-map)
 (global-set-key (kbd "M-,") 'usrj-map)
