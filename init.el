@@ -40,6 +40,7 @@
 (delete-selection-mode 1)
 (scroll-bar-mode -1)
 (show-paren-mode)
+(global-visual-line-mode 1)
 
 ;; keys
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -62,6 +63,8 @@
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "s-b") 'counsel-switch-buffer-other-window)
 (global-set-key (kbd "s-=") 'zoom)
+(global-set-key (kbd "s-j") 'ace-jump-mode)
+(global-set-key (kbd "s-t") 'org-babel-tangle)
 
 (define-prefix-command 'usrj-map)
 (global-set-key (kbd "M-,") 'usrj-map)
@@ -178,3 +181,16 @@
   "Move the current line down by N lines."
   (interactive "p")
   (usrj/move-line (if (null n) 1 n)))
+
+
+(defvar sticky-buffer-previous-header-line-format)
+(define-minor-mode sticky-buffer-mode
+  "Make the current window always display this buffer."
+  nil " sticky" nil
+  (if sticky-buffer-mode
+      (progn
+        (set (make-local-variable 'sticky-buffer-previous-header-line-format)
+             header-line-format)
+        (set-window-dedicated-p (selected-window) sticky-buffer-mode))
+    (set-window-dedicated-p (selected-window) sticky-buffer-mode)
+    (setq header-line-format sticky-buffer-previous-header-line-format)))
