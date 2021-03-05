@@ -182,15 +182,9 @@
   (interactive "p")
   (usrj/move-line (if (null n) 1 n)))
 
-
-(defvar sticky-buffer-previous-header-line-format)
-(define-minor-mode sticky-buffer-mode
-  "Make the current window always display this buffer."
-  nil " sticky" nil
-  (if sticky-buffer-mode
-      (progn
-        (set (make-local-variable 'sticky-buffer-previous-header-line-format)
-             header-line-format)
-        (set-window-dedicated-p (selected-window) sticky-buffer-mode))
-    (set-window-dedicated-p (selected-window) sticky-buffer-mode)
-    (setq header-line-format sticky-buffer-previous-header-line-format)))
+(defun usrj/lock-window ()
+  (interactive)
+  (let ((window (selected-window)))
+    (set-window-dedicated-p window t)
+    (set-window-parameter window 'no-other-window t)
+    (set-window-parameter window 'no-delete-other-windows t)))
