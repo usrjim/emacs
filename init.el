@@ -42,6 +42,10 @@
 (show-paren-mode)
 (global-visual-line-mode 1)
 
+;; custom variables
+(custom-set-variables
+ '(zoom-size '(0.8 . 0.8)))
+
 ;; keys
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
@@ -86,6 +90,7 @@
 ;; wrap-region
 (wrap-region-global-mode t)
 (wrap-region-add-wrapper "#+BEGIN_EXAMPLE\n" "\n#+END_EXAMPLE" "#" 'org-mode)
+(wrap-region-add-wrapper "```\n" "\n```" "`" 'markdown-mode)
 
 ;; hooks
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
