@@ -65,6 +65,10 @@
 (global-set-key (kbd "s-=") 'zoom)
 (global-set-key (kbd "s-j") 'ace-jump-mode)
 (global-set-key (kbd "s-t") 'org-babel-tangle)
+(global-set-key (kbd "s-1") 'delete-other-windows)
+(global-set-key (kbd "s-2") 'split-window-below)
+(global-set-key (kbd "s-3") 'split-window-right)
+(global-set-key (kbd "s-0") 'delete-window)
 
 (define-prefix-command 'usrj-map)
 (global-set-key (kbd "M-,") 'usrj-map)
@@ -182,9 +186,14 @@
   (interactive "p")
   (usrj/move-line (if (null n) 1 n)))
 
-(defun usrj/lock-window ()
-  (interactive)
+;; locky minor mode
+(define-minor-mode locky-window-mode
+  "lock the buffer to a window"
+  :lighter " LOCKED"
   (let ((window (selected-window)))
-    (set-window-dedicated-p window t)
-    (set-window-parameter window 'no-other-window t)
-    (set-window-parameter window 'no-delete-other-windows t)))
+    (set-window-dedicated-p window locky-window-mode)
+    (set-window-parameter window 'no-other-window locky-window-mode)
+    (set-window-parameter window 'no-delete-other-windows locky-window-mode)))
+
+(add-hook 'eshell-mode-hook 'locky-window-mode)
+(global-set-key (kbd "C-c l") 'locky-window-mode)
