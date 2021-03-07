@@ -42,6 +42,11 @@
 (delete-selection-mode 1)
 (scroll-bar-mode -1)
 (show-paren-mode)
+(global-visual-line-mode 1)
+
+;; custom variables
+(custom-set-variables
+ '(zoom-size '(0.8 . 0.8)))
 
 ;; keys
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -63,6 +68,13 @@
 (global-set-key (kbd "M-S-<down>") 'usrj/copy-line-down)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "s-b") 'counsel-switch-buffer-other-window)
+(global-set-key (kbd "s-=") 'zoom)
+(global-set-key (kbd "s-j") 'ace-jump-mode)
+(global-set-key (kbd "s-t") 'org-babel-tangle)
+(global-set-key (kbd "s-1") 'delete-other-windows)
+(global-set-key (kbd "s-2") 'split-window-below)
+(global-set-key (kbd "s-3") 'split-window-right)
+(global-set-key (kbd "s-0") 'delete-window)
 
 (define-prefix-command 'usrj-map)
 (global-set-key (kbd "M-,") 'usrj-map)
@@ -80,6 +92,7 @@
 ;; wrap-region
 (wrap-region-global-mode t)
 (wrap-region-add-wrapper "#+BEGIN_EXAMPLE\n" "\n#+END_EXAMPLE" "#" 'org-mode)
+(wrap-region-add-wrapper "```\n" "\n```" "`" 'markdown-mode)
 
 ;; hooks
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -179,3 +192,15 @@
   "Move the current line down by N lines."
   (interactive "p")
   (usrj/move-line (if (null n) 1 n)))
+
+;; locky minor mode
+(define-minor-mode locky-window-mode
+  "lock the buffer to a window"
+  :lighter " LOCKED"
+  (let ((window (selected-window)))
+    (set-window-dedicated-p window locky-window-mode)
+    (set-window-parameter window 'no-other-window locky-window-mode)
+    (set-window-parameter window 'no-delete-other-windows locky-window-mode)))
+
+(add-hook 'eshell-mode-hook 'locky-window-mode)
+(global-set-key (kbd "C-c l") 'locky-window-mode)
